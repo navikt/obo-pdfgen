@@ -1,0 +1,35 @@
+name: Deploy to dev
+on:
+  workflow_dispatch:
+jobs:
+  build-and-push:
+    name: Build and push
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    outputs:
+      image: ${{ steps.docker-build-push.outputs.image }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # ratchet:actions/checkout@v6
+
+      - uses: nais/docker-build-push@751a312f0803eb96a05a41fadf51be19b7be362c # ratchet:nais/docker-build-push@v0
+        id: docker-build-push
+        with:
+          team: obo
+
+  deploy-dev:
+    name: Deploy application to dev
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # ratchet:actions/checkout@v6
+
+      - uses: nais/deploy/actions/deploy@a7f8690f9b367fcbf5348a0a1e21d44f1aae50eb # ratchet:nais/deploy/actions/deploy@v2
+        env:
+          CLUSTER: dev-gcp
+          RESOURCE: .nais/application-config-dev.yaml
+          VAR: image=${{ needs.build-and-push.outputs.image }}
