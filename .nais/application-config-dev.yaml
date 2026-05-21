@@ -27,3 +27,6 @@ spec:
     inbound:
       rules:
         - application: veilarbvedtaksstotte
+env:
+  - name: DEV_MODE
+  - value: "true"
