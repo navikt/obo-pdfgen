@@ -1,0 +1,15 @@
+{
+  "malType": "SITUASJONSBESTEMT_INNSATS_BEHOLDE_ARBEID",
+  "veilederNavn": "Veileder Veiledersen",
+  "navKontor": "Nav Kontor",
+  "dato": "01. april 2025",
+  "malform": "NB",
+  "begrunnelse": ["Avsnitt 1", "Avsnitt 2"],
+  "kilder": ["Kilde 1", "Kilde 2"],
+  "mottaker": {
+    "navn": "Navn Navnesen",
+    "fodselsnummer": "12345678910"
+  },
+  "utkast": true,
+  "ungdomsgaranti": false
+}
