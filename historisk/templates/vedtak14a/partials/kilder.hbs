@@ -1,0 +1,47 @@
+<div class="avoid-page-break">
+    {{#eq malform "NN"}}
+        <h2>Kjeldene vi har brukt i vurderinga</h2>
+    {{/eq}}
+    {{#eq malform "NB"}}
+        <h2>Kildene vi har brukt i vurderingen</h2>
+    {{/eq}}
+    <p>
+        {{#eq malform "NN"}}
+            I vurderinga vår har vi brukt opplysningar frå desse kjeldene:
+        {{/eq}}
+        {{#eq malform "NB"}}
+            I vurderingen vår har vi brukt opplysninger fra disse kildene:
+        {{/eq}}
+    </p>
+</div>
+<ul>
+    {{#each kilder}}
+        <li>{{this}}</li>
+    {{/each}}
+</ul>
+<p>
+    {{#not_eq malType "STANDARD_INNSATS_SKAFFE_ARBEID_PROFILERING"}}
+        {{#eq malform "NN"}}
+            I tillegg har vi sett på kva moglegheiter du har i arbeidsmarknaden.
+        {{/eq}}
+        {{#eq malform "NB"}}
+            I tillegg har vi sett på mulighetene dine i arbeidsmarkedet.
+        {{/eq}}
+    {{/not_eq}}
+    {{#eq malType "STANDARD_INNSATS_SKAFFE_ARBEID_PROFILERING"}}
+        {{#eq malform "NN"}}
+            I tillegg har vi sett på kva moglegheiter du har i arbeidsmarknaden, og at du har vore i jobb i minst
+            6 av dei siste 12 månadene.
+        {{/eq}}
+        {{#eq malform "NB"}}
+            I tillegg har vi sett på mulighetene dine i arbeidsmarkedet, og at du har vært i jobb i minst 6 av de
+            siste 12 månedene.
+        {{/eq}}
+    {{/eq}}
+    {{#eq malform "NN"}}
+        Du finn nokre av opplysningane vi har om deg på <span class="lenke">nav.no/min-side</span>.
+    {{/eq}}
+    {{#eq malform "NB"}}
+        Du finner noen av opplysningene vi har om deg på <span class="lenke">nav.no/min-side</span>.
+    {{/eq}}
+</p>

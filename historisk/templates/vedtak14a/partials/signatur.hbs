@@ -1,0 +1,14 @@
+<p id="signatur">
+    {{#eq malform "NN"}}
+        Med vennleg helsing<br />
+    {{/eq}}
+    {{#eq malform "NB"}}
+        Med vennlig hilsen<br />
+    {{/eq}}
+
+    {{#if veilederNavn }}
+        {{veilederNavn}}<br />
+    {{/if}}
+
+    {{navKontor}}
+</p>

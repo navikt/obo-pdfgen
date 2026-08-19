@@ -1,0 +1,121 @@
+<style>
+    html,
+    body {
+        margin: 0;
+        font-family: "Source Sans 3", sans-serif;
+        font-weight: 400;
+        font-size: 11pt;
+        line-height: 16pt;
+    }
+
+    @page {
+        size: A4 portrait;
+        margin: 64pt 64pt 74pt;
+        padding-bottom: 26pt;
+
+
+        @bottom-right {
+            content: element(sidetall)
+        }
+    }
+
+    #nav-logo {
+        margin-bottom: 48pt;
+    }
+
+    h1 {
+        margin-top: 48pt;
+        margin-bottom: 26pt;
+        font-size: 16pt;
+        line-height: 20pt;
+        letter-spacing: 0.3pt;
+    }
+
+    h2,
+    h3 {
+        margin-top: 26pt;
+    }
+
+    h2 {
+        font-size: 13pt;
+        letter-spacing: 0.25pt;
+    }
+
+    h3 {
+        font-size: 12pt;
+        letter-spacing: 0.2pt;
+    }
+
+    .personalia-table {
+        width: 100%;
+        border-spacing: 0;
+    }
+
+    .personalia-table th {
+        font-weight: normal;
+    }
+
+    #header--navn {
+        vertical-align: top;
+    }
+
+    .dato-og-unntatt {
+        text-align: right;
+        vertical-align: top;
+    }
+
+    .innhold {
+        position: relative;
+        clear: both;
+    }
+
+    #signatur {
+        margin-top: 32pt;
+    }
+
+    .vannmerke-container {
+        position: fixed;
+        transform: rotate(-45deg);
+        left: 15px;
+        top: 400px;
+        z-index: -1;
+    }
+
+    .vannmerke {
+        font-size: 150px;
+        color: #e2e2e2;
+        font-weight: bold;
+    }
+
+    footer {
+        position: running(sidetall);
+        height: 32pt;
+        margin-bottom: 26pt;
+        font-size: 9pt;
+    }
+
+    .sidetall {
+        float: right;
+    }
+
+    #sidenummer:before {
+        content: counter(page);
+    }
+
+    #sideantall:before {
+        content: counter(pages)
+    }
+
+    .lenke {
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    .avoid-page-break {
+        page-break-inside: avoid;
+    }
+
+    .word-break {
+        word-wrap: break-word;
+    }
+</style>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8" />
+    {{#block 'vedtak14a/partials/oyeblikk-style' }}
+    {{/block}}
+    <meta name="description" content="Behovsvurdering"/>
+    <meta name="author" content="Nav"/>
+    <meta name="subject" content="Behovsvurdering"/>
+    <title>Svarene dine om behov for veiledning</title>
+</head>
+
+<body>
+    {{> vedtak14a/oyeblikkbilde-header}}
+
+    <footer>
+        <span class="sidetall">Side <span id="sidenummer"></span> av <span id="sideantall"></span></span>
+    </footer>
+
+    <div class="innhold">
+        <h1>Svarene dine om behov for veiledning</h1>
+
+        {{#if sistOppdatert}}
+            <div class="json-key-wrapper">
+                <span class="json-key">Sist oppdatert: </span>
+                <span>{{iso_to_long_date sistOppdatert}}</span>
+            </div>
+
+            <div>
+                <h2>Svar</h2>
+                <ul>
+                    {{#each svar}}
+                        <li>
+                            {{#if spm}}
+                                <div>
+                                    <span class="json-key">Spørsmål: </span>
+                                    <span>{{spm}}</span>
+                                </div>
+                            {{/if}}
+                            {{#if svar}}
+                                <div>
+                                    <span class="json-key">Svar: </span>
+                                    <span>{{svar}}</span>
+                                </div>
+                            {{/if}}
+                            {{#if dialogId}}
+                                <div>
+                                    <span class="json-key">DialogId: </span>
+                                    <span>{{dialogId}}</span>
+                                </div>
+                            {{/if}}
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{else}}
+            <b>Ingen registrerte data:</b> Personen har ikke registrert svar om behov for veiledning.
+        {{/if}}
+    </div>
+</body>
+
+</html>
