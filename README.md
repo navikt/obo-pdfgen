@@ -1,4 +1,4 @@
-# obo-pdfgenrs
+# obo-pdfgen
 Pdfgen som bruker Rust-versjon pdfgenrs
 
 #### Lokal testing

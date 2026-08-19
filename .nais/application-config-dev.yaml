@@ -1,7 +1,7 @@
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: obo-pdfgenrs
+  name: obo-pdfgen
   namespace: obo
   labels:
     team: obo
@@ -19,7 +19,7 @@ spec:
       enabled: true
       runtime: sdk
   ingresses:
-    - https://obo-pdfgenrs.intern.dev.nav.no
+    - https://obo-pdfgen.intern.dev.nav.no
   liveness:
     path: /internal/is_alive
   readiness:
@@ -37,6 +37,4 @@ spec:
     inbound:
       rules:
         - application: veilarbvedtaksstotte
-  env:
-    - name: DEV_MODE
-      value: "true"
+
