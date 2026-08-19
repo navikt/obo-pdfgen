@@ -32,7 +32,7 @@
   table(
     columns: (82pt, 1fr, 11pt, 95pt),
     stroke: none,
-    inset: 0pt,
+    inset: (x: 0pt, y: 2.5pt),
     align: (left + top, left + top, left + top, right + top),
     table.cell(align: left + top)[Navn:],
     table.cell(colspan: 2)[#mottaker.navn],

@@ -39,21 +39,21 @@
     varig(malform)
   }
 
-  [
-    #if malform == "NN" [
-      Vedtaket er gjort etter lov om arbeids- og velferdsforvaltninga (Nav-lova) § 14 a.
-    ]
-    #if malform == "NB" [
-      Vedtaket er gjort etter lov om arbeids- og velferdsforvaltningen (Nav-loven) § 14 a.
-    ]
+  parbreak()
+
+  if malform == "NN" [
+    Vedtaket er gjort etter lov om arbeids- og velferdsforvaltninga (Nav-lova) § 14 a.
+  ]
+  if malform == "NB" [
+    Vedtaket er gjort etter lov om arbeids- og velferdsforvaltningen (Nav-loven) § 14 a.
   ]
 
-  [
-    #if malform == "NN" [
-      Dersom du har søkt om pengestøtte frå Nav får du eit eige vedtak og brev om dette.
-    ]
-    #if malform == "NB" [
-      Dersom du har søkt om pengestøtte fra Nav får du et eget vedtak og brev om dette.
-    ]
+  parbreak()
+
+  if malform == "NN" [
+    Dersom du har søkt om pengestøtte frå Nav får du eit eige vedtak og brev om dette.
+  ]
+  if malform == "NB" [
+    Dersom du har søkt om pengestøtte fra Nav får du et eget vedtak og brev om dette.
   ]
 }
