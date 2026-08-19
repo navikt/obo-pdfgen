@@ -1,5 +1,5 @@
 
-#let data = json("/app/data/vedtak14a/vedtak.json")
+#let data = json("/data/vedtak14a/vedtak.json")
 
 #let malType = data.at("malType", default: "")
 #let malform = data.at("malform", default: "NB")
