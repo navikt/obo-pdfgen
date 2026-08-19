@@ -8,21 +8,31 @@ metadata:
 spec:
   image: {{image}}
   port: 8080
+  prometheus:
+    enabled: true
+    path: /internal/metrics
+  observability:
+    logging:
+      destinations:
+        - id: loki
+    autoInstrumentation:
+      enabled: true
+      runtime: sdk
   ingresses:
     - https://obo-pdfgenrs.intern.dev.nav.no
   liveness:
     path: /internal/is_alive
   readiness:
-    path: /internal/is_alive
+    path: /internal/is_ready
   replicas:
     min: 1
     max: 2
   resources:
     limits:
-      memory: 768Mi
+      memory: 1024Mi
     requests:
       cpu: 15m
-      memory: 512Mi
+      memory: 128Mi
   accessPolicy:
     inbound:
       rules:
