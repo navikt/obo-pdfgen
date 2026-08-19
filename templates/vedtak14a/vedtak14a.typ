@@ -1,13 +1,13 @@
-#import "base.typ": base
-#import "partials/innledning.typ": innledning
-#import "partials/ungdomsgaranti.typ": ungdomsgaranti
-#import "partials/begrunnelse.typ": begrunnelse
-#import "partials/kilder.typ": kilder
-#import "partials/hjelp-skaffe.typ": hjelp-skaffe
-#import "partials/hjelp-beholde.typ": hjelp-beholde
-#import "partials/klage.typ": klage
-#import "partials/sporsmal.typ": sporsmal
-#import "partials/signatur.typ": signatur
+#import "/resources/vedtak14a/base.typ": base
+#import "/resources/vedtak14a/partials/innledning.typ": innledning
+#import "/resources/vedtak14a/partials/ungdomsgaranti.typ": ungdomsgaranti
+#import "/resources/vedtak14a/partials/begrunnelse.typ": begrunnelse
+#import "/resources/vedtak14a/partials/kilder.typ": kilder
+#import "/resources/vedtak14a/partials/hjelp-skaffe.typ": hjelp-skaffe
+#import "/resources/vedtak14a/partials/hjelp-beholde.typ": hjelp-beholde
+#import "/resources/vedtak14a/partials/klage.typ": klage
+#import "/resources/vedtak14a/partials/sporsmal.typ": sporsmal
+#import "/resources/vedtak14a/partials/signatur.typ": signatur
 
 #let data = json("/data/vedtak14a/vedtak14a.json")
 #let malType = data.malType
