@@ -1,5 +1,5 @@
 #let klage(malform) = {
-  block(breakable: false)[
+  block(breakable: false, above: 26pt)[
     == Du har rett til å klage
 
     #if malform == "NN" [

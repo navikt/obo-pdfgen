@@ -1,5 +1,5 @@
 #let sporsmal(malform) = {
-  block(breakable: false)[
+  block(breakable: false, above: 26pt)[
     == Har du spørsmål?
 
     #if malform == "NN" [

@@ -1,6 +1,6 @@
 #let hjelp-beholde(malform) = {
   if malform == "NN" {
-    block(breakable: false)[
+    block(breakable: false, above: 26pt)[
       == Tenester du kan bruke
 
       På #box[nav.no] kan du
@@ -10,7 +10,7 @@
   }
 
   if malform == "NB" {
-    block(breakable: false)[
+    block(breakable: false, above: 26pt)[
       == Tjenester du kan bruke
 
       På #box[nav.no] kan du

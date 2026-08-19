@@ -1,5 +1,5 @@
 #let kilder(malform, malType, kilder) = {
-  block(breakable: false)[
+  block(breakable: false, above: 26pt)[
     #if malform == "NN" [
       == Kjeldene vi har brukt i vurderinga
     ]
