@@ -19,5 +19,12 @@
 
   set list(spacing: par.leading)
 
+  set page(footer: context {
+    set text(size: 9pt)
+    align(right)[
+      Side #counter(page).display() av #counter(page).final().first()
+    ]
+  })
+
   body
 }
