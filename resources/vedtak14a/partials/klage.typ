@@ -1,5 +1,7 @@
+#import "tokens.typ" as t
+
 #let klage(malform) = {
-  block(breakable: false, above: 26pt)[
+  block(breakable: false, above: t.space-above-heading)[
     == Du har rett til å klage
 
     #if malform == "NN" [
