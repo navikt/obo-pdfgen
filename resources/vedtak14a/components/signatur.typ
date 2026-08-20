@@ -1,4 +1,4 @@
-#import "tokens.typ" as t
+#import "../theme.typ" as t
 
 #let signatur(malform, veilederNavn, navKontor) = {
   block(above: t.space-before-signatur, below: t.space-after-signatur)[

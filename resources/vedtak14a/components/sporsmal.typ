@@ -1,4 +1,4 @@
-#import "tokens.typ" as t
+#import "../theme.typ" as t
 
 #let sporsmal(malform) = {
   block(breakable: false, above: t.space-above-heading)[

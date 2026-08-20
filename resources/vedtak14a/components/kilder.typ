@@ -1,4 +1,4 @@
-#import "tokens.typ" as t
+#import "../theme.typ" as t
 
 #let kilder(malform, malType, kilder) = {
   block(breakable: false, above: t.space-above-heading)[

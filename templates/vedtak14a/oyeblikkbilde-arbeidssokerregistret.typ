@@ -1,6 +1,4 @@
-#import "/resources/vedtak14a/partials/oyeblikk-style.typ": oyeblikk-style
-#import "/resources/vedtak14a/oyeblikkbilde-header.typ": oyeblikkbilde-header
-#import "/resources/vedtak14a/partials/helpers.typ": iso_to_long_date, json-key
+#import "/resources/vedtak14a/lib.typ": *
 
 #let data = json("/data/vedtak14a/oyeblikkbilde-arbeidssokerregistret.json")
 #let arbeidssoekerperiodeStartet = data.at("arbeidssoekerperiodeStartet", default: none)

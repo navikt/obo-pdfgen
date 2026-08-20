@@ -1,11 +1,11 @@
-#import "maler/standard-skaffe.typ": standard-skaffe
-#import "maler/standard-beholde.typ": standard-beholde
-#import "maler/situasjonsbestemt-skaffe.typ": situasjonsbestemt-skaffe
-#import "maler/situasjonsbestemt-beholde.typ": situasjonsbestemt-beholde
-#import "maler/spesielt-tilpasset-skaffe.typ": spesielt-tilpasset-skaffe
-#import "maler/spesielt-tilpasset-beholde.typ": spesielt-tilpasset-beholde
-#import "maler/gradert-varig.typ": gradert-varig
-#import "maler/varig.typ": varig
+#import "../maler/standard-skaffe.typ": standard-skaffe
+#import "../maler/standard-beholde.typ": standard-beholde
+#import "../maler/situasjonsbestemt-skaffe.typ": situasjonsbestemt-skaffe
+#import "../maler/situasjonsbestemt-beholde.typ": situasjonsbestemt-beholde
+#import "../maler/spesielt-tilpasset-skaffe.typ": spesielt-tilpasset-skaffe
+#import "../maler/spesielt-tilpasset-beholde.typ": spesielt-tilpasset-beholde
+#import "../maler/gradert-varig.typ": gradert-varig
+#import "../maler/varig.typ": varig
 
 #let innledning(malType, malform) = {
   if malType == "STANDARD_INNSATS_SKAFFE_ARBEID_PROFILERING" {

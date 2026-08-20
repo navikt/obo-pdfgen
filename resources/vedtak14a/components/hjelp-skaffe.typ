@@ -1,4 +1,4 @@
-#import "tokens.typ" as t
+#import "../theme.typ" as t
 
 #let hjelp-skaffe(malform) = {
   if malform == "NN" {
