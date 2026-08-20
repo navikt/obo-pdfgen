@@ -46,9 +46,16 @@
 #let space-below-logo = 48pt        // 48 px avstand under logo
 #let footer-from-bottom = 26pt      // bunntekst 26 px fra bunnen av siden
 
-// Hjelpefunksjon: linjeavstand (leading) for en gitt tekststil,
-// slik at linjehøyden treffer baselinegridet.
-#let leading-of(s) = s.line-height - s.size
+// Cap-height for Source Sans 3, uttrykt i em (målt: Typst legger `leading`
+// oppå fontens linjeboks, som ved leading = 0 er nøyaktig cap-height, ikke
+// hele skriftstørrelsen). Verifisert konstant på tvers av størrelser:
+// 7.26pt/11pt = 10.56pt/16pt = 8.58pt/13pt = 0.66.
+#let cap-height-em = 0.66
+
+// Hjelpefunksjon: linjeavstand (leading) for en gitt tekststil, slik at den
+// faktiske baseline-til-baseline-avstanden treffer Aksels `line-height`.
+// advance = leading + cap-height*size  =>  leading = line-height - cap-height*size
+#let leading-of(s) = s.line-height - cap-height-em * s.size
 
 // Hjelpefunksjon: vertikal innrykk (inset) som gir en tabellrad
 // høyde lik baselinegridet for brødtekst.
