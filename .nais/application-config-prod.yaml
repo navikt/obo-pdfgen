@@ -1,0 +1,39 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: obo-pdfgen
+  namespace: obo
+  labels:
+    team: obo
+spec:
+  image: {{image}}
+  port: 8080
+  prometheus:
+    enabled: true
+    path: /internal/metrics
+  observability:
+    logging:
+      destinations:
+        - id: loki
+    autoInstrumentation:
+      enabled: true
+      runtime: sdk
+  ingresses:
+    - https://obo-pdfgen.intern.nav.no
+  liveness:
+    path: /internal/is_alive
+  readiness:
+    path: /internal/is_ready
+  replicas:
+    min: 2
+    max: 4
+  resources:
+    limits:
+      memory: 1024Mi
+    requests:
+      cpu: 15m
+      memory: 128Mi
+  accessPolicy:
+    inbound:
+      rules:
+        - application: veilarbvedtaksstotte
