@@ -44,5 +44,8 @@
 }
 
 #klage(malform)
-#sporsmal(malform)
-#signatur(malform, data.at("veilederNavn", default: none), data.navKontor)
+
+#block(breakable: false)[
+    #sporsmal(malform)
+    #signatur(malform, data.at("veilederNavn", default: none), data.navKontor)
+]
