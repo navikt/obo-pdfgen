@@ -86,7 +86,7 @@
 
   let utdanning = data.at("utdanning", default: ())
   if har(utdanning) {
-    [=== Utdanning]
+    [== Utdanning]
     list(..utdanning.map(u => {
       let d = ()
       if u.at("tittel", default: none) != none { d.push(felt("Tittel:", u.tittel)) }
@@ -101,7 +101,7 @@
 
   let arbeidserfaring = data.at("arbeidserfaring", default: ())
   if har(arbeidserfaring) {
-    [=== Arbeidserfaring]
+    [== Arbeidserfaring]
     list(..arbeidserfaring.map(a => {
       let d = ()
       if a.at("tittel", default: none) != none { d.push(felt("Tittel:", a.tittel)) }
@@ -116,7 +116,7 @@
 
   let fagdokumentasjoner = data.at("fagdokumentasjoner", default: ())
   if har(fagdokumentasjoner) {
-    [=== Fagdokumentasjoner]
+    [== Fagdokumentasjoner]
     list(..fagdokumentasjoner.map(f => {
       let d = ()
       if f.at("tittel", default: none) != none { d.push(felt("Tittel:", f.tittel)) }
@@ -127,7 +127,7 @@
 
   let kompetanse = jobbprofil.at("kompetanse", default: ())
   if har(kompetanse) {
-    [=== Kompetanse]
+    [== Kompetanse]
     list(..kompetanse.map(k => {
       let d = ()
       if k.at("tittel", default: none) != none { d.push(felt("Tittel:", k.tittel)) }
@@ -137,7 +137,7 @@
 
   let onsketYrke = jobbprofil.at("onsketYrke", default: ())
   if har(onsketYrke) {
-    [=== Ønsket yrke]
+    [== Ønsket yrke]
     list(..onsketYrke.map(y => {
       let d = ()
       if y.at("tittel", default: none) != none { d.push(felt("Tittel:", y.tittel)) }
@@ -147,7 +147,7 @@
 
   let onsketArbeidssted = jobbprofil.at("onsketArbeidssted", default: ())
   if har(onsketArbeidssted) {
-    [=== Ønsket arbeidssted]
+    [== Ønsket arbeidssted]
     list(..onsketArbeidssted.map(s => {
       let d = ()
       if s.at("stedsnavn", default: none) != none { d.push(felt("Stedsnavn:", s.stedsnavn)) }
@@ -157,7 +157,7 @@
 
   let onsketAnsettelsesform = jobbprofil.at("onsketAnsettelsesform", default: ())
   if har(onsketAnsettelsesform) {
-    [=== Ønsket ansettelsesform]
+    [== Ønsket ansettelsesform]
     list(..onsketAnsettelsesform.map(a => {
       let d = ()
       if a.at("tittel", default: none) != none { d.push(felt("Tittel:", ansettelsesform-label(a.tittel))) }
@@ -167,7 +167,7 @@
 
   let onsketArbeidstidsordning = jobbprofil.at("onsketArbeidstidsordning", default: ())
   if har(onsketArbeidstidsordning) {
-    [=== Ønsket arbeidstidsordning]
+    [== Ønsket arbeidstidsordning]
     list(..onsketArbeidstidsordning.map(a => {
       let d = ()
       if a.at("tittel", default: none) != none { d.push(felt("Tittel:", arbeidstid-label(a.tittel))) }
@@ -177,7 +177,7 @@
 
   let onsketArbeidsdagordning = jobbprofil.at("onsketArbeidsdagordning", default: ())
   if har(onsketArbeidsdagordning) {
-    [=== Ønsket arbeidsdagordning]
+    [== Ønsket arbeidsdagordning]
     list(..onsketArbeidsdagordning.map(a => {
       let d = ()
       if a.at("tittel", default: none) != none { d.push(felt("Tittel:", arbeidstid-label(a.tittel))) }
@@ -187,7 +187,7 @@
 
   let onsketArbeidsskiftordning = jobbprofil.at("onsketArbeidsskiftordning", default: ())
   if har(onsketArbeidsskiftordning) {
-    [=== Ønsket arbeidsskiftordning]
+    [== Ønsket arbeidsskiftordning]
     list(..onsketArbeidsskiftordning.map(a => {
       let d = ()
       if a.at("tittel", default: none) != none { d.push(felt("Tittel:", arbeidstid-label(a.tittel))) }
@@ -196,7 +196,7 @@
   }
 
   if onsketArbeidsskiftordning != none {
-    [=== Heltid eller deltid]
+    [== Heltid eller deltid]
     let d = ()
     if type(onsketArbeidsskiftordning) == dictionary {
       if onsketArbeidsskiftordning.at("heltid", default: none) != none { d.push(felt("Heltid:", "Ja")) }
@@ -207,13 +207,13 @@
 
   let oppstart = jobbprofil.at("oppstart", default: none)
   if oppstart != none {
-    [=== Oppstart]
+    [== Oppstart]
     list([#json-key[Oppstart:] #oppstart-label(oppstart)])
   }
 
   let sprak = data.at("sprak", default: ())
   if har(sprak) {
-    [=== Språk]
+    [== Språk]
     list(..sprak.map(s => {
       let d = ()
       if s.at("sprak", default: none) != none { d.push(felt("Språk:", s.sprak)) }
@@ -225,7 +225,7 @@
 
   let kurs = data.at("kurs", default: ())
   if har(kurs) {
-    [=== Kurs]
+    [== Kurs]
     list(..kurs.map(k => {
       let d = ()
       if k.at("tittel", default: none) != none { d.push(felt("Tittel:", k.tittel)) }
@@ -238,7 +238,7 @@
 
   let forerkort = data.at("forerkort", default: ())
   if har(forerkort) {
-    [=== Førerkort]
+    [== Førerkort]
     list(..forerkort.map(f => {
       let d = ()
       if f.at("klasse", default: none) != none { d.push(felt("Klasse:", f.klasse)) }
@@ -248,7 +248,7 @@
 
   let annenErfaring = data.at("annenErfaring", default: ())
   if har(annenErfaring) {
-    [=== Annen Erfaring]
+    [== Annen Erfaring]
     list(..annenErfaring.map(a => {
       let d = ()
       if a.at("rolle", default: none) != none { d.push(felt("Rolle:", a.rolle)) }
@@ -261,7 +261,7 @@
 
   let godkjenninger = data.at("godkjenninger", default: ())
   if har(godkjenninger) {
-    [=== Godkjenninger]
+    [== Godkjenninger]
     list(..godkjenninger.map(g => {
       let d = ()
       if g.at("tittel", default: none) != none { d.push(felt("Tittel:", g.tittel)) }
@@ -274,7 +274,7 @@
 
   let andreGodkjenninger = data.at("andreGodkjenninger", default: ())
   if har(andreGodkjenninger) {
-    [=== Andre Godkjenninger]
+    [== Andre Godkjenninger]
     list(..andreGodkjenninger.map(g => {
       let d = ()
       if g.at("tittel", default: none) != none { d.push(felt("Tittel:", g.tittel)) }
