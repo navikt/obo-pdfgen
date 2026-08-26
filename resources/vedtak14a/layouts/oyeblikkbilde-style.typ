@@ -1,9 +1,11 @@
 #import "../theme.typ" as t
+#import "../debug.typ": baseline-overlay, debug-baseline
 
 #let oyeblikk-style(body) = {
   set page(
     paper: "a4",
     margin: (top: t.margin-top, bottom: t.margin-bottom, left: t.margin-x, right: t.margin-x),
+    foreground: if debug-baseline { baseline-overlay } else { none },
   )
   set text(
     font: t.font-family,
