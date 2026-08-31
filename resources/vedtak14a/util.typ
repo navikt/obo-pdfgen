@@ -20,3 +20,6 @@
 }
 
 #let json-key(tekst) = text(weight: 600, tekst)
+
+// Velger nynorsk (nn) eller bokmål (nb) innhold basert på malform.
+#let by-malform(malform, nn, nb) = if malform == "NN" { nn } else { nb }

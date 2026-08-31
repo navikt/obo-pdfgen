@@ -1,6 +1,7 @@
 #import "brev-style.typ": style
 #import "../theme.typ" as t
 #import "../nav-logo.typ": nav-logo
+#import "../util.typ": by-malform
 
 #let base(malform, mottaker, dato, utkast, body) = {
   set document(
@@ -41,10 +42,11 @@
     [Fødselsnummer:],
     [#mottaker.fodselsnummer],
     table.cell(colspan: 2, align: right + top)[
-      #emph[
-        #if malform == "NN" [Unntatt offentlegheita]
-        #if malform == "NB" [Unntatt offentligheten]
-      ]
+      #emph[#by-malform(
+        malform,
+        [Unntatt offentlegheita],
+        [Unntatt offentligheten]
+        )]
     ],
   )
 

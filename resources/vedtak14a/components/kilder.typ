@@ -1,20 +1,17 @@
 #import "../theme.typ" as t
+#import "../util.typ": by-malform
 
 #let kilder(malform, malType, kilder) = {
   block(breakable: false, above: t.space-above-heading)[
-    #if malform == "NN" [
-      == Kjeldene vi har brukt i vurderinga
-    ]
-    #if malform == "NB" [
-      == Kildene vi har brukt i vurderingen
-    ]
+    #by-malform(
+      malform,
+      [== Kjeldene vi har brukt i vurderinga],
+      [== Kildene vi har brukt i vurderingen])
 
-    #if malform == "NN" [
-      I vurderinga vår har vi brukt opplysningar frå desse kjeldene:
-    ]
-    #if malform == "NB" [
-      I vurderingen vår har vi brukt opplysninger fra disse kildene:
-    ]
+    #by-malform(
+      malform, 
+      [I vurderinga vår har vi brukt opplysningar frå desse kjeldene:],
+      [I vurderingen vår har vi brukt opplysninger fra disse kildene:])
   ]
 
   for kilde in kilder [
@@ -22,27 +19,23 @@
   ]
 
   [
-    #if malType != "STANDARD_INNSATS_SKAFFE_ARBEID_PROFILERING" {
-      if malform == "NN" [
-        I tillegg har vi sett på kva moglegheiter du har i arbeidsmarknaden.
-      ]
-      if malform == "NB" [
-        I tillegg har vi sett på mulighetene dine i arbeidsmarkedet.
-      ]
-    }
     #if malType == "STANDARD_INNSATS_SKAFFE_ARBEID_PROFILERING" {
-      if malform == "NN" [
-        I tillegg har vi sett på kva moglegheiter du har i arbeidsmarknaden, og at du har vore i jobb i minst 6 av dei siste 12 månadene.
-      ]
-      if malform == "NB" [
-        I tillegg har vi sett på mulighetene dine i arbeidsmarkedet, og at du har vært i jobb i minst 6 av de siste 12 månedene.
-      ]
+      by-malform(
+        malform,
+        [I tillegg har vi sett på kva moglegheiter du har i arbeidsmarknaden, og at du har vore i jobb i minst 6 av dei siste 12 månadene.],
+        [I tillegg har vi sett på mulighetene dine i arbeidsmarkedet, og at du har vært i jobb i minst 6 av de siste 12 månedene.],
+      )
+    } else {
+      by-malform(
+        malform,
+        [I tillegg har vi sett på kva moglegheiter du har i arbeidsmarknaden.],
+        [I tillegg har vi sett på mulighetene dine i arbeidsmarkedet.],
+      )
     }
-    #if malform == "NN" [
-      Du finn nokre av opplysningane vi har om deg på #box[nav.no/min-side].
-    ]
-    #if malform == "NB" [
-      Du finner noen av opplysningene vi har om deg på #box[nav.no/min-side].
-    ]
+    #by-malform(
+      malform,
+      [Du finn nokre av opplysningane vi har om deg på #box[nav.no/min-side].],
+      [Du finner noen av opplysningene vi har om deg på #box[nav.no/min-side].]
+    )
   ]
 }
