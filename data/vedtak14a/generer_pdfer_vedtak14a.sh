@@ -1,6 +1,6 @@
 #!/opt/homebrew/bin/bash
 
-PDF_ENDPOINT="http://localhost:8081/api/v1/genpdf/vedtak14a/vedtak14a"
+PDF_ENDPOINT="http://localhost:8080/api/v1/genpdf/vedtak14a/vedtak14a"
 OUTPUT_FOLDER="${1:-$HOME/Downloads/vedtak14a}"
 mkdir -p "$OUTPUT_FOLDER"
 
