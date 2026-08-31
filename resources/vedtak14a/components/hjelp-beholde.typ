@@ -1,5 +1,5 @@
 #import "../theme.typ" as t
-#import "../util.typ": by-malform
+#import "../util.typ": by-malform, nav-lenke
 
 #let hjelp-beholde(malform) = {
   block(breakable: false, above: t.space-above-heading)[
@@ -8,16 +8,16 @@
       [
         == Tenester du kan bruke
 
-        På #box[nav.no] kan du
+        På #nav-lenke("nav.no") kan du
 
-        - halde oversikt over arbeidsretta aktivitetar i aktivitetsplanen på #box[nav.no/aktivitetsplan]
+        - halde oversikt over arbeidsretta aktivitetar i aktivitetsplanen på #nav-lenke("nav.no/aktivitetsplan")
       ],
       [
         == Tjenester du kan bruke
 
-        På #box[nav.no] kan du
+        På #nav-lenke("nav.no") kan du
 
-        - holde oversikt over arbeidsrettede aktiviteter i aktivitetsplanen på #box[nav.no/aktivitetsplan]
+        - holde oversikt over arbeidsrettede aktiviteter i aktivitetsplanen på #nav-lenke("nav.no/aktivitetsplan")
       ],
     )
   ]

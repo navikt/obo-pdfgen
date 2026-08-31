@@ -4,7 +4,7 @@
 #import "layouts/brev.typ": base
 #import "layouts/oyeblikkbilde.typ": oyeblikkbilde-header
 #import "layouts/oyeblikkbilde-style.typ": oyeblikk-style
-#import "util.typ": iso_to_long_date, json-key, by-malform
+#import "util.typ": iso_to_long_date, json-key, by-malform, nav-lenke
 
 #import "components/innledning.typ": innledning
 #import "components/ungdomsgaranti.typ": ungdomsgaranti

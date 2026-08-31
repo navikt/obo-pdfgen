@@ -1,5 +1,5 @@
 #import "../theme.typ" as t
-#import "../util.typ": by-malform
+#import "../util.typ": by-malform, nav-lenke
 
 #let kilder(malform, malType, kilder) = {
   block(breakable: false, above: t.space-above-heading)[
@@ -34,8 +34,8 @@
     }
     #by-malform(
       malform,
-      [Du finn nokre av opplysningane vi har om deg på #box[nav.no/min-side].],
-      [Du finner noen av opplysningene vi har om deg på #box[nav.no/min-side].]
+      [Du finn nokre av opplysningane vi har om deg på #nav-lenke("nav.no/min-side").],
+      [Du finner noen av opplysningene vi har om deg på #nav-lenke("nav.no/min-side").]
     )
   ]
 }
