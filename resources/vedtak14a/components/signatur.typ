@@ -1,8 +1,7 @@
-#import "../theme.typ" as t
 #import "../util.typ": by-malform
 
 #let signatur(malform, veilederNavn, navKontor) = {
-  block(above: t.space-before-signatur, below: t.space-after-signatur)[
+  block(above: 32pt, below: 40pt)[
     #by-malform(
       malform,
       [Med vennleg helsing #linebreak()],

@@ -1,8 +1,7 @@
-#import "../theme.typ" as t
 #import "../util.typ": by-malform, nav-lenke
 
 #let klage(malform) = {
-  block(breakable: false, above: t.space-above-heading)[
+  block(breakable: false)[
     == Du har rett til å klage
 
     #by-malform(

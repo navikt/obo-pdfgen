@@ -1,8 +1,7 @@
-#import "../theme.typ" as t
 #import "../util.typ": by-malform, nav-lenke
 
 #let kilder(malform, malType, kilder) = {
-  block(breakable: false, above: t.space-above-heading)[
+  block(breakable: false)[
     #by-malform(
       malform,
       [== Kjeldene vi har brukt i vurderinga],
@@ -12,13 +11,11 @@
       malform, 
       [I vurderinga vår har vi brukt opplysningar frå desse kjeldene:],
       [I vurderingen vår har vi brukt opplysninger fra disse kildene:])
-  ]
 
-  for kilde in kilder [
-    - #kilde
-  ]
+    #for kilde in kilder [
+      - #kilde
+    ]
 
-  [
     #if malType == "STANDARD_INNSATS_SKAFFE_ARBEID_PROFILERING" {
       by-malform(
         malform,

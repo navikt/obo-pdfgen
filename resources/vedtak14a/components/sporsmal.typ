@@ -1,8 +1,7 @@
-#import "../theme.typ" as t
 #import "../util.typ": by-malform, nav-lenke
 
 #let sporsmal(malform) = {
-  block(breakable: false, above: t.space-above-heading)[
+  block(breakable: false)[
     == Har du spørsmål?
 
     #by-malform(
