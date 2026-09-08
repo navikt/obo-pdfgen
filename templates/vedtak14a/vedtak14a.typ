@@ -6,7 +6,7 @@
 #import "/resources/vedtak14a/debug.typ": baseline-overlay, debug-baseline
 #import "/resources/vedtak14a/lib.typ": *
 
-#let data = json("/data/vedtak14a/14avedtak.json")
+#let data = json("/data/vedtak14a/vedtak14a.json")
 #let maltype = data.malType
 #let malform = data.malform
 

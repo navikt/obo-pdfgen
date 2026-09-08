@@ -71,22 +71,30 @@
 #let har(verdi) = verdi != none and verdi != ()
 
 #set document(title: "CV-en/jobbønskene dine på nav.no", author: "Nav")
-#show: oyeblikk-style
+
+#show: body => oyeblikksbilde-style( // Legger på stylingen som er definert i style.typ
+  body,
+  utkast: data.at("utkast", default: false)
+)
+
 
 #oyeblikkbilde-header(data.mottaker)
 
 = CV-en/jobbønskene dine på nav.no
 
 #if sistEndret != none {
-  block(below: 6pt)[#json-key[Sist oppdatert: ] #iso_to_long_date(sistEndret)]
+  json-key[Sist endret: ]
+  iso_to_long_date(sistEndret)
+
+  [== CV]
 
   if data.at("sammendrag", default: none) != none {
-    [#json-key[Sammendrag:]#data.sammendrag]
+    [#json-key[Sammendrag: ]#data.sammendrag]
   }
 
   let utdanning = data.at("utdanning", default: ())
   if har(utdanning) {
-    [== Utdanning]
+    [=== Utdanninger]
     list(..utdanning.map(u => {
       let d = ()
       if u.at("tittel", default: none) != none { d.push(felt("Tittel:", u.tittel)) }
@@ -99,9 +107,20 @@
     }))
   }
 
+  let fagdokumentasjoner = data.at("fagdokumentasjoner", default: ())
+  if har(fagdokumentasjoner) {
+    [=== Fagbrev]
+    list(..fagdokumentasjoner.map(f => {
+      let d = ()
+      if f.at("tittel", default: none) != none { d.push(felt("Tittel:", f.tittel)) }
+      if f.at("type", default: none) != none { d.push(felt("Type:", fagdok-type-label(f.type))) }
+      d.join(linebreak())
+    }))
+  }
+
   let arbeidserfaring = data.at("arbeidserfaring", default: ())
   if har(arbeidserfaring) {
-    [== Arbeidserfaring]
+    [=== Arbeidsforhold]
     list(..arbeidserfaring.map(a => {
       let d = ()
       if a.at("tittel", default: none) != none { d.push(felt("Tittel:", a.tittel)) }
@@ -114,141 +133,9 @@
     }))
   }
 
-  let fagdokumentasjoner = data.at("fagdokumentasjoner", default: ())
-  if har(fagdokumentasjoner) {
-    [== Fagdokumentasjoner]
-    list(..fagdokumentasjoner.map(f => {
-      let d = ()
-      if f.at("tittel", default: none) != none { d.push(felt("Tittel:", f.tittel)) }
-      if f.at("type", default: none) != none { d.push(felt("Type:", fagdok-type-label(f.type))) }
-      d.join(linebreak())
-    }))
-  }
-
-  let kompetanse = jobbprofil.at("kompetanse", default: ())
-  if har(kompetanse) {
-    [== Kompetanse]
-    list(..kompetanse.map(k => {
-      let d = ()
-      if k.at("tittel", default: none) != none { d.push(felt("Tittel:", k.tittel)) }
-      d.join(linebreak())
-    }))
-  }
-
-  let onsketYrke = jobbprofil.at("onsketYrke", default: ())
-  if har(onsketYrke) {
-    [== Ønsket yrke]
-    list(..onsketYrke.map(y => {
-      let d = ()
-      if y.at("tittel", default: none) != none { d.push(felt("Tittel:", y.tittel)) }
-      d.join(linebreak())
-    }))
-  }
-
-  let onsketArbeidssted = jobbprofil.at("onsketArbeidssted", default: ())
-  if har(onsketArbeidssted) {
-    [== Ønsket arbeidssted]
-    list(..onsketArbeidssted.map(s => {
-      let d = ()
-      if s.at("stedsnavn", default: none) != none { d.push(felt("Stedsnavn:", s.stedsnavn)) }
-      d.join(linebreak())
-    }))
-  }
-
-  let onsketAnsettelsesform = jobbprofil.at("onsketAnsettelsesform", default: ())
-  if har(onsketAnsettelsesform) {
-    [== Ønsket ansettelsesform]
-    list(..onsketAnsettelsesform.map(a => {
-      let d = ()
-      if a.at("tittel", default: none) != none { d.push(felt("Tittel:", ansettelsesform-label(a.tittel))) }
-      d.join(linebreak())
-    }))
-  }
-
-  let onsketArbeidstidsordning = jobbprofil.at("onsketArbeidstidsordning", default: ())
-  if har(onsketArbeidstidsordning) {
-    [== Ønsket arbeidstidsordning]
-    list(..onsketArbeidstidsordning.map(a => {
-      let d = ()
-      if a.at("tittel", default: none) != none { d.push(felt("Tittel:", arbeidstid-label(a.tittel))) }
-      d.join(linebreak())
-    }))
-  }
-
-  let onsketArbeidsdagordning = jobbprofil.at("onsketArbeidsdagordning", default: ())
-  if har(onsketArbeidsdagordning) {
-    [== Ønsket arbeidsdagordning]
-    list(..onsketArbeidsdagordning.map(a => {
-      let d = ()
-      if a.at("tittel", default: none) != none { d.push(felt("Tittel:", arbeidstid-label(a.tittel))) }
-      d.join(linebreak())
-    }))
-  }
-
-  let onsketArbeidsskiftordning = jobbprofil.at("onsketArbeidsskiftordning", default: ())
-  if har(onsketArbeidsskiftordning) {
-    [== Ønsket arbeidsskiftordning]
-    list(..onsketArbeidsskiftordning.map(a => {
-      let d = ()
-      if a.at("tittel", default: none) != none { d.push(felt("Tittel:", arbeidstid-label(a.tittel))) }
-      d.join(linebreak())
-    }))
-  }
-
-  if onsketArbeidsskiftordning != none {
-    [== Heltid eller deltid]
-    let d = ()
-    if type(onsketArbeidsskiftordning) == dictionary {
-      if onsketArbeidsskiftordning.at("heltid", default: none) != none { d.push(felt("Heltid:", "Ja")) }
-      if onsketArbeidsskiftordning.at("deltid", default: none) != none { d.push(felt("Deltid:", "Ja")) }
-    }
-    list(d.join(linebreak()))
-  }
-
-  let oppstart = jobbprofil.at("oppstart", default: none)
-  if oppstart != none {
-    [== Oppstart]
-    list([#json-key[Oppstart:] #oppstart-label(oppstart)])
-  }
-
-  let sprak = data.at("sprak", default: ())
-  if har(sprak) {
-    [== Språk]
-    list(..sprak.map(s => {
-      let d = ()
-      if s.at("sprak", default: none) != none { d.push(felt("Språk:", s.sprak)) }
-      if s.at("muntligNiva", default: none) != none { d.push(felt("Muntlig:", sprak-niva-label(s.muntligNiva))) }
-      if s.at("skriftligNiva", default: none) != none { d.push(felt("Skriftlig:", sprak-niva-label(s.skriftligNiva))) }
-      d.join(linebreak())
-    }))
-  }
-
-  let kurs = data.at("kurs", default: ())
-  if har(kurs) {
-    [== Kurs]
-    list(..kurs.map(k => {
-      let d = ()
-      if k.at("tittel", default: none) != none { d.push(felt("Tittel:", k.tittel)) }
-      if k.at("arrangor", default: none) != none { d.push(felt("Arrangør:", k.arrangor)) }
-      if k.at("tidspunkt", default: none) != none { d.push(felt("Fullført:", iso_to_long_date(k.tidspunkt))) }
-      if k.at("varighet", default: none) != none { d.push(felt("Kurslengde:", varighet-label(k.varighet))) }
-      d.join(linebreak())
-    }))
-  }
-
-  let forerkort = data.at("forerkort", default: ())
-  if har(forerkort) {
-    [== Førerkort]
-    list(..forerkort.map(f => {
-      let d = ()
-      if f.at("klasse", default: none) != none { d.push(felt("Klasse:", f.klasse)) }
-      d.join(linebreak())
-    }))
-  }
-
   let annenErfaring = data.at("annenErfaring", default: ())
   if har(annenErfaring) {
-    [== Annen Erfaring]
+    [=== Andre erfaringer]
     list(..annenErfaring.map(a => {
       let d = ()
       if a.at("rolle", default: none) != none { d.push(felt("Rolle:", a.rolle)) }
@@ -259,9 +146,19 @@
     }))
   }
 
+  let kompetanse = jobbprofil.at("kompetanse", default: ())
+  if har(kompetanse) {
+    [=== Kompetanser]
+    list(..kompetanse.map(k => {
+      let d = ()
+      if k.at("tittel", default: none) != none { d.push(felt("", k.tittel)) }
+      d.join(linebreak())
+    }))
+  }
+
   let godkjenninger = data.at("godkjenninger", default: ())
   if har(godkjenninger) {
-    [== Godkjenninger]
+    [=== Offentlige godkjenninger]
     list(..godkjenninger.map(g => {
       let d = ()
       if g.at("tittel", default: none) != none { d.push(felt("Tittel:", g.tittel)) }
@@ -274,7 +171,7 @@
 
   let andreGodkjenninger = data.at("andreGodkjenninger", default: ())
   if har(andreGodkjenninger) {
-    [== Andre Godkjenninger]
+    [=== Andre godkjenninger]
     list(..andreGodkjenninger.map(g => {
       let d = ()
       if g.at("tittel", default: none) != none { d.push(felt("Tittel:", g.tittel)) }
@@ -283,6 +180,120 @@
       if g.at("utloperDato", default: none) != none { d.push(felt("Utløper:", iso_to_long_date(g.utloperDato))) }
       d.join(linebreak())
     }))
+  }
+
+  let sprak = data.at("sprak", default: ())
+  if har(sprak) {
+    [=== Språk]
+    list(..sprak.map(s => {
+      let d = ()
+      if s.at("sprak", default: none) != none { d.push(felt("Språk:", s.sprak)) }
+      if s.at("muntligNiva", default: none) != none { d.push(felt("Muntlig:", sprak-niva-label(s.muntligNiva))) }
+      if s.at("skriftligNiva", default: none) != none { d.push(felt("Skriftlig:", sprak-niva-label(s.skriftligNiva))) }
+      d.join(linebreak())
+    }))
+  }
+
+  let forerkort = data.at("forerkort", default: ())
+  if har(forerkort) {
+    [=== Førerkort]
+    list(..forerkort.map(f => {
+      let d = ()
+      if f.at("klasse", default: none) != none { d.push(felt("Klasse:", f.klasse)) }
+      d.join(linebreak())
+    }))
+  }
+
+  let kurs = data.at("kurs", default: ())
+  if har(kurs) {
+    [=== Kurs]
+    list(..kurs.map(k => {
+      let d = ()
+      if k.at("tittel", default: none) != none { d.push(felt("Tittel:", k.tittel)) }
+      if k.at("arrangor", default: none) != none { d.push(felt("Arrangør:", k.arrangor)) }
+      if k.at("tidspunkt", default: none) != none { d.push(felt("Fullført:", iso_to_long_date(k.tidspunkt))) }
+      if k.at("varighet", default: none) != none { d.push(felt("Kurslengde:", varighet-label(k.varighet))) }
+      d.join(linebreak())
+    }))
+  }
+
+  [== Jobbønsker]
+
+  let onsketYrke = jobbprofil.at("onsketYrke", default: ())
+  if har(onsketYrke) {
+    [=== Ønsket yrke]
+    list(..onsketYrke.map(y => {
+      let d = ()
+      if y.at("tittel", default: none) != none { d.push(felt("", y.tittel)) }
+      d.join(linebreak())
+    }))
+  }
+
+  let onsketArbeidssted = jobbprofil.at("onsketArbeidssted", default: ())
+  if har(onsketArbeidssted) {
+    [=== Ønsket arbeidssted]
+    list(..onsketArbeidssted.map(s => {
+      let d = ()
+      if s.at("stedsnavn", default: none) != none { d.push(felt("", s.stedsnavn)) }
+      d.join(linebreak())
+    }))
+  }
+
+  let heltidDeltid = jobbprofil.at("heltidDeltid", default: none)
+  if type(heltidDeltid) == dictionary {
+    let d = ()
+    if heltidDeltid.at("heltid", default: false) == true { d.push(felt("Heltid:", "Ja")) }
+    if heltidDeltid.at("deltid", default: false) == true { d.push(felt("Deltid:", "Ja")) }
+    if d.len() > 0 {
+      [=== Heltid eller deltid]
+      list(d.join(linebreak()))
+    }
+  }  
+
+  let onsketArbeidstidsordning = jobbprofil.at("onsketArbeidstidsordning", default: ())
+  if har(onsketArbeidstidsordning) {
+    [=== Ønsket arbeidstidsordning]
+    list(..onsketArbeidstidsordning.map(a => {
+      let d = ()
+      if a.at("tittel", default: none) != none { d.push(felt("", arbeidstid-label(a.tittel))) }
+      d.join(linebreak())
+    }))
+  }
+
+  let onsketArbeidsdagordning = jobbprofil.at("onsketArbeidsdagordning", default: ())
+  if har(onsketArbeidsdagordning) {
+    [=== Ønsket arbeidsdagordning]
+    list(..onsketArbeidsdagordning.map(a => {
+      let d = ()
+      if a.at("tittel", default: none) != none { d.push(felt("", arbeidstid-label(a.tittel))) }
+      d.join(linebreak())
+    }))
+  }
+
+  let onsketArbeidsskiftordning = jobbprofil.at("onsketArbeidsskiftordning", default: ())
+  if har(onsketArbeidsskiftordning) {
+    [=== Ønsket arbeidsskiftordning]
+    list(..onsketArbeidsskiftordning.map(a => {
+      let d = ()
+      if a.at("tittel", default: none) != none { d.push(felt("", arbeidstid-label(a.tittel))) }
+      d.join(linebreak())
+    }))
+  }
+
+  let onsketAnsettelsesform = jobbprofil.at("onsketAnsettelsesform", default: ())
+  if har(onsketAnsettelsesform) {
+    [=== Ønsket ansettelsesform]
+    list(..onsketAnsettelsesform.map(a => {
+      let d = ()
+      if a.at("tittel", default: none) != none { d.push(felt("", ansettelsesform-label(a.tittel))) }
+      d.join(linebreak())
+    }))
+  }
+
+  let oppstart = jobbprofil.at("oppstart", default: none)
+  if oppstart != none {
+    [=== Oppstart]
+    list([#json-key[] #oppstart-label(oppstart)])
   }
 } else [
   *Ingen registrerte data:* Personen har ikke registrert CV/jobbønsker.

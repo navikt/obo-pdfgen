@@ -2,9 +2,9 @@
 // templates/vedtak14a/*.typ kan gjøre `#import "/resources/vedtak14a/lib.typ": *`.
 
 #import "layouts/oyeblikkbilde.typ": oyeblikkbilde-header
-#import "layouts/oyeblikkbilde-style.typ": oyeblikk-style
 #import "util.typ": iso_to_long_date, json-key, by-malform, nav-lenke
 #import "style.typ": style
+#import "oyeblikksbilde-style.typ": oyeblikksbilde-style
 
 #import "components/innledning.typ": innledning
 #import "components/ungdomsgaranti.typ": ungdomsgaranti

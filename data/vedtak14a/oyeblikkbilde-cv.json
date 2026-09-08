@@ -165,10 +165,20 @@
         "tittel": "UKEDAGER"
       }
     ],
-    "onsketArbeidsskiftordning": [],
+    "onsketArbeidsskiftordning": [
+      {
+			"tittel": "SKIFT"
+      },
+      {
+        "tittel": "VAKT"
+      },
+      {
+        "tittel": "TURNUS"
+      }
+    ],
     "heltidDeltid": {
       "heltid": true,
-      "deltid": false
+      "deltid": true
     },
     "kompetanse": [
       {
