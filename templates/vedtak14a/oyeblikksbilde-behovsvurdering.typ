@@ -5,7 +5,9 @@
 #let svar = data.at("svar", default: ())
 
 #set document(title: "Svarene dine om behov for veiledning", author: "Nav")
-#show: oyeblikk-style
+#show: body => oyeblikksbilde-style(body, utkast: data.at("utkast", default: false))
+
+// Mal
 
 #oyeblikksbilde-header(data.mottaker)
 
@@ -17,17 +19,11 @@
   [
     == Svar
     #for post in svar {
-      let deler = ()
-      if post.at("spm", default: none) != none {
-        deler.push([#json-key[Spørsmål: ] #post.spm])
-      }
-      if post.at("svar", default: none) != none {
-        deler.push([#json-key[Svar: ] #post.svar])
-      }
-      if post.at("dialogId", default: none) != none {
-        deler.push([#json-key[DialogId: ] #post.dialogId])
-      }
-      list(deler.join(linebreak()))
+      list(build-list((
+        field-or-none("Spørsmål:", post.at("spm", default: none)),
+        field-or-none("Svar:", post.at("svar", default: none)),
+        field-or-none("DialogId:", post.at("dialogId", default: none)),
+      )))
     }
   ]
 } else [

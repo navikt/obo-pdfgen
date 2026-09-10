@@ -95,7 +95,7 @@
 
   section("Fagbrev", data.at("fagdokumentasjoner", default: ()), f => build-list((
     field-or-none("Tittel:", f.at("tittel", default: none)),
-    field-or-none("Type:", if f.at("type", default: none) != none { fagdok-type-label(f.type) } else { none }),
+    field-or-none("Type:", labeled(f.at("type", default: none), fagdok-type-label)),
   )))
 
   section("Arbeidsforhold", data.at("arbeidserfaring", default: ()), a => build-list((
@@ -132,8 +132,8 @@
 
   section("Språk", data.at("sprak", default: ()), s => build-list((
     field-or-none("Språk:", s.at("sprak", default: none)),
-    field-or-none("Muntlig:", if s.at("muntligNiva", default: none) != none { sprak-niva-label(s.muntligNiva) } else { none }),
-    field-or-none("Skriftlig:", if s.at("skriftligNiva", default: none) != none { sprak-niva-label(s.skriftligNiva) } else { none }),
+    field-or-none("Muntlig:", labeled(s.at("muntligNiva", default: none), sprak-niva-label)),
+    field-or-none("Skriftlig:", labeled(s.at("skriftligNiva", default: none), sprak-niva-label)),
   )))
 
   section("Førerkort", data.at("forerkort", default: ()), f => build-list((
@@ -144,7 +144,7 @@
     field-or-none("Tittel:", k.at("tittel", default: none)),
     field-or-none("Arrangør:", k.at("arrangor", default: none)),
     date-field-or-none("Fullført:", k.at("tidspunkt", default: none)),
-    field-or-none("Kurslengde:", if k.at("varighet", default: none) != none { varighet-label(k.varighet) } else { none }),
+    field-or-none("Kurslengde:", labeled(k.at("varighet", default: none), varighet-label)),
   )))
 
   [== Jobbønsker]
@@ -171,12 +171,12 @@
     ("onsketArbeidsskiftordning", "Ønsket arbeidsskiftordning"),
   ) {
     section(title, jobbprofil.at(key, default: ()), a => build-list((
-      field-or-none("", if a.at("tittel", default: none) != none { arbeidstid-label(a.tittel) } else { none }),
+      field-or-none("", labeled(a.at("tittel", default: none), arbeidstid-label)),
     )))
   }
 
   section("Ønsket ansettelsesform", jobbprofil.at("onsketAnsettelsesform", default: ()), a => build-list((
-    field-or-none("", if a.at("tittel", default: none) != none { ansettelsesform-label(a.tittel) } else { none }),
+    field-or-none("", labeled(a.at("tittel", default: none), ansettelsesform-label)),
   )))
 
   let oppstart = jobbprofil.at("oppstart", default: none)
