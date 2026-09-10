@@ -3,7 +3,7 @@
 
 #import "components/oyeblikksbilde-header.typ": oyeblikksbilde-header
 #import "util.typ": iso_to_long_date, json-key, by-malform, nav-lenke, felt, field-or-none, date-field-or-none, labeled, build-list, har, section, simple-section, qa, qa-multi
-#import "style.typ": style
+#import "vedtak-style.typ": style
 #import "oyeblikksbilde-style.typ": oyeblikksbilde-style
 
 #import "components/innledning.typ": innledning
