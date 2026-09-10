@@ -47,7 +47,9 @@ for malType in "${malTypes[@]}"; do
       --arg navKontor "Nav Kontor" \
       --arg dato "01. april 2025" \
       --arg malform "$malform" \
-      --argjson begrunnelse '["Avsnitt 1", "Avsnitt 2"]' \
+      --arg begrunnelse "Avsnitt 1
+
+Avsnitt 2" \
       --argjson kilder '["Kilde 1", "Kilde 2"]' \
       --argjson mottaker '{"navn":"Navn Navnesen","fodselsnummer":"12345678910"}' \
       --argjson utkast true \
