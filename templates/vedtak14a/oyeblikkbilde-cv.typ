@@ -5,56 +5,64 @@
 #let jobbprofil = data.at("jobbprofil", default: (:))
 
 #let felt(nokkel, verdi) = [#json-key(nokkel) #verdi]
-
-#let fagdok-type-label(v) = {
-  if v == "AUTORISASJON" { "Autorisasjon" }
-  else if v == "MESTERBREV" { "Mesterbrev" }
-  else if v == "SVENNEBREV_FAGBREV" { "Fagbrev/Svennebrev" }
-  else { "" }
+#let field-or-none(nokkel, verdi) = if verdi != none { felt(nokkel, verdi) } else { none }
+#let date-field-or-none(nokkel, verdi) = if verdi != none { felt(nokkel, iso_to_long_date(verdi)) } else { none }
+#let build-list(fields) = fields.filter(f => f != none).join(linebreak())
+#let har(verdi) = verdi != none and verdi != ()
+#let section(title, items, mapper) = {
+  if har(items) {
+    [=== #title]
+    list(..items.map(mapper))
+  }
 }
+#let simple-section(title, items, key) = section(title, items, item => build-list((
+  field-or-none("", item.at(key, default: none)),
+)))
 
-#let ansettelsesform-label(v) = {
-  if v == "FAST" { "Fast" }
-  else if v == "VIKARIAT" { "Vikariat" }
-  else if v == "ENGASJEMENT" { "Engasjement" }
-  else if v == "PROSJEKT" { "Prosjekt" }
-  else if v == "SESONG" { "Sesong" }
-  else if v == "TRAINEE" { "Trainee" }
-  else if v == "LAERLING" { "Lærling" }
-  else if v == "SELVSTENDIG_NAERINGSDRIVENDE" { "Selvstendig næringsdrivende" }
-  else if v == "FERIEJOBB" { "Feriejobb" }
-  else if v == "ANNET" { "Annet" }
-  else { "" }
-}
+#let fagdok-type-label(v) = (
+  "AUTORISASJON": "Autorisasjon",
+  "MESTERBREV": "Mesterbrev",
+  "SVENNEBREV_FAGBREV": "Fagbrev/Svennebrev",
+).at(v, default: "")
 
-#let arbeidstid-label(v) = {
-  if v == "DAGTID" { "Dagtid" }
-  else if v == "KVELD" { "Kveld" }
-  else if v == "NATT" { "Natt" }
-  else if v == "UKEDAGER" { "Ukedager" }
-  else if v == "LOERDAG" { "Lørdag" }
-  else if v == "SOENDAG" { "Søndag" }
-  else if v == "SKIFT" { "Skift" }
-  else if v == "VAKT" { "Vakt" }
-  else if v == "TURNUS" { "Turnus" }
-  else { "" }
-}
+#let ansettelsesform-label(v) = (
+  "FAST": "Fast",
+  "VIKARIAT": "Vikariat",
+  "ENGASJEMENT": "Engasjement",
+  "PROSJEKT": "Prosjekt",
+  "SESONG": "Sesong",
+  "TRAINEE": "Trainee",
+  "LAERLING": "Lærling",
+  "SELVSTENDIG_NAERINGSDRIVENDE": "Selvstendig næringsdrivende",
+  "FERIEJOBB": "Feriejobb",
+  "ANNET": "Annet",
+).at(v, default: "")
 
-#let oppstart-label(v) = {
-  if v == "LEDIG_NAA" { "Kan begynne nå" }
-  else if v == "ETTER_TRE_MND" { "Har 3 måneders oppsigelse" }
-  else if v == "ETTER_AVTALE" { "Kan begynne etter nærmere avtale" }
-  else { "" }
-}
+#let arbeidstid-label(v) = (
+  "DAGTID": "Dagtid",
+  "KVELD": "Kveld",
+  "NATT": "Natt",
+  "UKEDAGER": "Ukedager",
+  "LOERDAG": "Lørdag",
+  "SOENDAG": "Søndag",
+  "SKIFT": "Skift",
+  "VAKT": "Vakt",
+  "TURNUS": "Turnus",
+).at(v, default: "")
 
-#let sprak-niva-label(v) = {
-  if v == "FOERSTESPRAAK" { "Førstespråk (morsmål)" }
-  else if v == "VELDIG_GODT" { "Veldig godt" }
-  else if v == "GODT" { "Godt" }
-  else if v == "NYBEGYNNER" { "Nybegynner" }
-  else if v == "IKKE_OPPGITT" { "Ikke oppgitt" }
-  else { "" }
-}
+#let oppstart-label(v) = (
+  "LEDIG_NAA": "Kan begynne nå",
+  "ETTER_TRE_MND": "Har 3 måneders oppsigelse",
+  "ETTER_AVTALE": "Kan begynne etter nærmere avtale",
+).at(v, default: "")
+
+#let sprak-niva-label(v) = (
+  "FOERSTESPRAAK": "Førstespråk (morsmål)",
+  "VELDIG_GODT": "Veldig godt",
+  "GODT": "Godt",
+  "NYBEGYNNER": "Nybegynner",
+  "IKKE_OPPGITT": "Ikke oppgitt",
+).at(v, default: "")
 
 #let varighet-label(v) = {
   let n = v.varighet
@@ -68,15 +76,14 @@
   str(n) + " " + ord
 }
 
-#let har(verdi) = verdi != none and verdi != ()
-
 #set document(title: "CV-en/jobbønskene dine på nav.no", author: "Nav")
 
-#show: body => oyeblikksbilde-style( // Legger på stylingen som er definert i style.typ
+#show: body => oyeblikksbilde-style( // Legger på stylingen som er definert i oyeblikksbilde-style.typ
   body,
   utkast: data.at("utkast", default: false)
 )
 
+// Mal
 
 #oyeblikkbilde-header(data.mottaker)
 
@@ -92,203 +99,100 @@
     [#json-key[Sammendrag: ]#data.sammendrag]
   }
 
-  let utdanning = data.at("utdanning", default: ())
-  if har(utdanning) {
-    [=== Utdanninger]
-    list(..utdanning.map(u => {
-      let d = ()
-      if u.at("tittel", default: none) != none { d.push(felt("Tittel:", u.tittel)) }
-      if u.at("studiested", default: none) != none { d.push(felt("Sted:", u.studiested)) }
-      if u.at("utdanningsnivaa", default: none) != none { d.push(felt("Utdanningsnivå:", u.utdanningsnivaa)) }
-      if u.at("fraDato", default: none) != none { d.push(felt("Fra dato:", iso_to_long_date(u.fraDato))) }
-      if u.at("tilDato", default: none) != none { d.push(felt("Til dato:", iso_to_long_date(u.tilDato))) }
-      if u.at("beskrivelse", default: none) != none { d.push(felt("Beskrivelse:", u.beskrivelse)) }
-      d.join(linebreak())
-    }))
-  }
+  section("Utdanninger", data.at("utdanning", default: ()), u => build-list((
+    field-or-none("Tittel:", u.at("tittel", default: none)),
+    field-or-none("Sted:", u.at("studiested", default: none)),
+    field-or-none("Utdanningsnivå:", u.at("utdanningsnivaa", default: none)),
+    date-field-or-none("Fra dato:", u.at("fraDato", default: none)),
+    date-field-or-none("Til dato:", u.at("tilDato", default: none)),
+    field-or-none("Beskrivelse:", u.at("beskrivelse", default: none)),
+  )))
 
-  let fagdokumentasjoner = data.at("fagdokumentasjoner", default: ())
-  if har(fagdokumentasjoner) {
-    [=== Fagbrev]
-    list(..fagdokumentasjoner.map(f => {
-      let d = ()
-      if f.at("tittel", default: none) != none { d.push(felt("Tittel:", f.tittel)) }
-      if f.at("type", default: none) != none { d.push(felt("Type:", fagdok-type-label(f.type))) }
-      d.join(linebreak())
-    }))
-  }
+  section("Fagbrev", data.at("fagdokumentasjoner", default: ()), f => build-list((
+    field-or-none("Tittel:", f.at("tittel", default: none)),
+    field-or-none("Type:", if f.at("type", default: none) != none { fagdok-type-label(f.type) } else { none }),
+  )))
 
-  let arbeidserfaring = data.at("arbeidserfaring", default: ())
-  if har(arbeidserfaring) {
-    [=== Arbeidsforhold]
-    list(..arbeidserfaring.map(a => {
-      let d = ()
-      if a.at("tittel", default: none) != none { d.push(felt("Tittel:", a.tittel)) }
-      if a.at("arbeidsgiver", default: none) != none { d.push(felt("Arbeidsgiver:", a.arbeidsgiver)) }
-      if a.at("sted", default: none) != none { d.push(felt("Sted:", a.sted)) }
-      if a.at("fraDato", default: none) != none { d.push(felt("Fra dato:", iso_to_long_date(a.fraDato))) }
-      if a.at("tilDato", default: none) != none { d.push(felt("Til dato:", iso_to_long_date(a.tilDato))) }
-      if a.at("beskrivelse", default: none) != none { d.push(felt("Beskrivelse:", a.beskrivelse)) }
-      d.join(linebreak())
-    }))
-  }
+  section("Arbeidsforhold", data.at("arbeidserfaring", default: ()), a => build-list((
+    field-or-none("Tittel:", a.at("tittel", default: none)),
+    field-or-none("Arbeidsgiver:", a.at("arbeidsgiver", default: none)),
+    field-or-none("Sted:", a.at("sted", default: none)),
+    date-field-or-none("Fra dato:", a.at("fraDato", default: none)),
+    date-field-or-none("Til dato:", a.at("tilDato", default: none)),
+    field-or-none("Beskrivelse:", a.at("beskrivelse", default: none)),
+  )))
 
-  let annenErfaring = data.at("annenErfaring", default: ())
-  if har(annenErfaring) {
-    [=== Andre erfaringer]
-    list(..annenErfaring.map(a => {
-      let d = ()
-      if a.at("rolle", default: none) != none { d.push(felt("Rolle:", a.rolle)) }
-      if a.at("beskrivelse", default: none) != none { d.push(felt("Beskrivelse:", a.beskrivelse)) }
-      if a.at("fraDato", default: none) != none { d.push(felt("Startdato:", iso_to_long_date(a.fraDato))) }
-      if a.at("tilDato", default: none) != none { d.push(felt("Sluttdato:", iso_to_long_date(a.tilDato))) }
-      d.join(linebreak())
-    }))
-  }
+  section("Andre erfaringer", data.at("annenErfaring", default: ()), a => build-list((
+    field-or-none("Rolle:", a.at("rolle", default: none)),
+    field-or-none("Beskrivelse:", a.at("beskrivelse", default: none)),
+    date-field-or-none("Startdato:", a.at("fraDato", default: none)),
+    date-field-or-none("Sluttdato:", a.at("tilDato", default: none)),
+  )))
 
-  let kompetanse = jobbprofil.at("kompetanse", default: ())
-  if har(kompetanse) {
-    [=== Kompetanser]
-    list(..kompetanse.map(k => {
-      let d = ()
-      if k.at("tittel", default: none) != none { d.push(felt("", k.tittel)) }
-      d.join(linebreak())
-    }))
-  }
+  simple-section("Kompetanser", jobbprofil.at("kompetanse", default: ()), "tittel")
 
-  let godkjenninger = data.at("godkjenninger", default: ())
-  if har(godkjenninger) {
-    [=== Offentlige godkjenninger]
-    list(..godkjenninger.map(g => {
-      let d = ()
-      if g.at("tittel", default: none) != none { d.push(felt("Tittel:", g.tittel)) }
-      if g.at("utsteder", default: none) != none { d.push(felt("Utsteder:", g.utsteder)) }
-      if g.at("gjennomfortDato", default: none) != none { d.push(felt("Fullført:", iso_to_long_date(g.gjennomfortDato))) }
-      if g.at("utloperDato", default: none) != none { d.push(felt("Utløper:", iso_to_long_date(g.utloperDato))) }
-      d.join(linebreak())
-    }))
-  }
+  section("Offentlige godkjenninger", data.at("godkjenninger", default: ()), g => build-list((
+    field-or-none("Tittel:", g.at("tittel", default: none)),
+    field-or-none("Utsteder:", g.at("utsteder", default: none)),
+    date-field-or-none("Fullført:", g.at("gjennomfortDato", default: none)),
+    date-field-or-none("Utløper:", g.at("utloperDato", default: none)),
+  )))
 
-  let andreGodkjenninger = data.at("andreGodkjenninger", default: ())
-  if har(andreGodkjenninger) {
-    [=== Andre godkjenninger]
-    list(..andreGodkjenninger.map(g => {
-      let d = ()
-      if g.at("tittel", default: none) != none { d.push(felt("Tittel:", g.tittel)) }
-      if g.at("utsteder", default: none) != none { d.push(felt("Utsteder:", g.utsteder)) }
-      if g.at("gjennomfortDato", default: none) != none { d.push(felt("Fullført:", iso_to_long_date(g.gjennomfortDato))) }
-      if g.at("utloperDato", default: none) != none { d.push(felt("Utløper:", iso_to_long_date(g.utloperDato))) }
-      d.join(linebreak())
-    }))
-  }
+  section("Andre godkjenninger", data.at("andreGodkjenninger", default: ()), g => build-list((
+    field-or-none("Tittel:", g.at("tittel", default: none)),
+    field-or-none("Utsteder:", g.at("utsteder", default: none)),
+    date-field-or-none("Fullført:", g.at("gjennomfortDato", default: none)),
+    date-field-or-none("Utløper:", g.at("utloperDato", default: none)),
+  )))
 
-  let sprak = data.at("sprak", default: ())
-  if har(sprak) {
-    [=== Språk]
-    list(..sprak.map(s => {
-      let d = ()
-      if s.at("sprak", default: none) != none { d.push(felt("Språk:", s.sprak)) }
-      if s.at("muntligNiva", default: none) != none { d.push(felt("Muntlig:", sprak-niva-label(s.muntligNiva))) }
-      if s.at("skriftligNiva", default: none) != none { d.push(felt("Skriftlig:", sprak-niva-label(s.skriftligNiva))) }
-      d.join(linebreak())
-    }))
-  }
+  section("Språk", data.at("sprak", default: ()), s => build-list((
+    field-or-none("Språk:", s.at("sprak", default: none)),
+    field-or-none("Muntlig:", if s.at("muntligNiva", default: none) != none { sprak-niva-label(s.muntligNiva) } else { none }),
+    field-or-none("Skriftlig:", if s.at("skriftligNiva", default: none) != none { sprak-niva-label(s.skriftligNiva) } else { none }),
+  )))
 
-  let forerkort = data.at("forerkort", default: ())
-  if har(forerkort) {
-    [=== Førerkort]
-    list(..forerkort.map(f => {
-      let d = ()
-      if f.at("klasse", default: none) != none { d.push(felt("Klasse:", f.klasse)) }
-      d.join(linebreak())
-    }))
-  }
+  section("Førerkort", data.at("forerkort", default: ()), f => build-list((
+    field-or-none("Klasse:", f.at("klasse", default: none)),
+  )))
 
-  let kurs = data.at("kurs", default: ())
-  if har(kurs) {
-    [=== Kurs]
-    list(..kurs.map(k => {
-      let d = ()
-      if k.at("tittel", default: none) != none { d.push(felt("Tittel:", k.tittel)) }
-      if k.at("arrangor", default: none) != none { d.push(felt("Arrangør:", k.arrangor)) }
-      if k.at("tidspunkt", default: none) != none { d.push(felt("Fullført:", iso_to_long_date(k.tidspunkt))) }
-      if k.at("varighet", default: none) != none { d.push(felt("Kurslengde:", varighet-label(k.varighet))) }
-      d.join(linebreak())
-    }))
-  }
+  section("Kurs", data.at("kurs", default: ()), k => build-list((
+    field-or-none("Tittel:", k.at("tittel", default: none)),
+    field-or-none("Arrangør:", k.at("arrangor", default: none)),
+    date-field-or-none("Fullført:", k.at("tidspunkt", default: none)),
+    field-or-none("Kurslengde:", if k.at("varighet", default: none) != none { varighet-label(k.varighet) } else { none }),
+  )))
 
   [== Jobbønsker]
 
-  let onsketYrke = jobbprofil.at("onsketYrke", default: ())
-  if har(onsketYrke) {
-    [=== Ønsket yrke]
-    list(..onsketYrke.map(y => {
-      let d = ()
-      if y.at("tittel", default: none) != none { d.push(felt("", y.tittel)) }
-      d.join(linebreak())
-    }))
-  }
+  simple-section("Ønsket yrke", jobbprofil.at("onsketYrke", default: ()), "tittel")
 
-  let onsketArbeidssted = jobbprofil.at("onsketArbeidssted", default: ())
-  if har(onsketArbeidssted) {
-    [=== Ønsket arbeidssted]
-    list(..onsketArbeidssted.map(s => {
-      let d = ()
-      if s.at("stedsnavn", default: none) != none { d.push(felt("", s.stedsnavn)) }
-      d.join(linebreak())
-    }))
-  }
+  simple-section("Ønsket arbeidssted", jobbprofil.at("onsketArbeidssted", default: ()), "stedsnavn")
 
   let heltidDeltid = jobbprofil.at("heltidDeltid", default: none)
   if type(heltidDeltid) == dictionary {
-    let d = ()
-    if heltidDeltid.at("heltid", default: false) == true { d.push(felt("Heltid:", "Ja")) }
-    if heltidDeltid.at("deltid", default: false) == true { d.push(felt("Deltid:", "Ja")) }
+    let d = (
+      field-or-none("Heltid:", if heltidDeltid.at("heltid", default: false) == true { "Ja" } else { none }),
+      field-or-none("Deltid:", if heltidDeltid.at("deltid", default: false) == true { "Ja" } else { none }),
+    ).filter(x => x != none)
     if d.len() > 0 {
       [=== Heltid eller deltid]
-      list(d.join(linebreak()))
+      list(..d)
     }
-  }  
-
-  let onsketArbeidstidsordning = jobbprofil.at("onsketArbeidstidsordning", default: ())
-  if har(onsketArbeidstidsordning) {
-    [=== Ønsket arbeidstidsordning]
-    list(..onsketArbeidstidsordning.map(a => {
-      let d = ()
-      if a.at("tittel", default: none) != none { d.push(felt("", arbeidstid-label(a.tittel))) }
-      d.join(linebreak())
-    }))
   }
 
-  let onsketArbeidsdagordning = jobbprofil.at("onsketArbeidsdagordning", default: ())
-  if har(onsketArbeidsdagordning) {
-    [=== Ønsket arbeidsdagordning]
-    list(..onsketArbeidsdagordning.map(a => {
-      let d = ()
-      if a.at("tittel", default: none) != none { d.push(felt("", arbeidstid-label(a.tittel))) }
-      d.join(linebreak())
-    }))
+  for (key, title) in (// Alle tre bruker samme dictionary
+    ("onsketArbeidstidsordning", "Ønsket arbeidstidsordning"),
+    ("onsketArbeidsdagordning", "Ønsket arbeidsdagordning"),
+    ("onsketArbeidsskiftordning", "Ønsket arbeidsskiftordning"),
+  ) {
+    section(title, jobbprofil.at(key, default: ()), a => build-list((
+      field-or-none("", if a.at("tittel", default: none) != none { arbeidstid-label(a.tittel) } else { none }),
+    )))
   }
 
-  let onsketArbeidsskiftordning = jobbprofil.at("onsketArbeidsskiftordning", default: ())
-  if har(onsketArbeidsskiftordning) {
-    [=== Ønsket arbeidsskiftordning]
-    list(..onsketArbeidsskiftordning.map(a => {
-      let d = ()
-      if a.at("tittel", default: none) != none { d.push(felt("", arbeidstid-label(a.tittel))) }
-      d.join(linebreak())
-    }))
-  }
-
-  let onsketAnsettelsesform = jobbprofil.at("onsketAnsettelsesform", default: ())
-  if har(onsketAnsettelsesform) {
-    [=== Ønsket ansettelsesform]
-    list(..onsketAnsettelsesform.map(a => {
-      let d = ()
-      if a.at("tittel", default: none) != none { d.push(felt("", ansettelsesform-label(a.tittel))) }
-      d.join(linebreak())
-    }))
-  }
+  section("Ønsket ansettelsesform", jobbprofil.at("onsketAnsettelsesform", default: ()), a => build-list((
+    field-or-none("", if a.at("tittel", default: none) != none { ansettelsesform-label(a.tittel) } else { none }),
+  )))
 
   let oppstart = jobbprofil.at("oppstart", default: none)
   if oppstart != none {
