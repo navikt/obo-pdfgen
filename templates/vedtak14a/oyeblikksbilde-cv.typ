@@ -1,23 +1,8 @@
 #import "/resources/vedtak14a/lib.typ": *
 
-#let data = json("/data/vedtak14a/oyeblikkbilde-cv.json")
+#let data = json("/data/vedtak14a/oyeblikksbilde-cv.json")
 #let sistEndret = data.at("sistEndret", default: none)
 #let jobbprofil = data.at("jobbprofil", default: (:))
-
-#let felt(nokkel, verdi) = [#json-key(nokkel) #verdi]
-#let field-or-none(nokkel, verdi) = if verdi != none { felt(nokkel, verdi) } else { none }
-#let date-field-or-none(nokkel, verdi) = if verdi != none { felt(nokkel, iso_to_long_date(verdi)) } else { none }
-#let build-list(fields) = fields.filter(f => f != none).join(linebreak())
-#let har(verdi) = verdi != none and verdi != ()
-#let section(title, items, mapper) = {
-  if har(items) {
-    [=== #title]
-    list(..items.map(mapper))
-  }
-}
-#let simple-section(title, items, key) = section(title, items, item => build-list((
-  field-or-none("", item.at(key, default: none)),
-)))
 
 #let fagdok-type-label(v) = (
   "AUTORISASJON": "Autorisasjon",
@@ -85,7 +70,7 @@
 
 // Mal
 
-#oyeblikkbilde-header(data.mottaker)
+#oyeblikksbilde-header(data.mottaker)
 
 = CV-en/jobbønskene dine på nav.no
 

@@ -1,6 +1,6 @@
 #import "/resources/vedtak14a/lib.typ": *
 
-#let data = json("/data/vedtak14a/oyeblikkbilde-arbeidssokerregistret.json")
+#let data = json("/data/vedtak14a/oyeblikksbilde-arbeidssokerregistret.json")
 #let arbeidssoekerperiodeStartet = data.at("arbeidssoekerperiodeStartet", default: none)
 #let opplysninger = data.at("opplysningerOmArbeidssoeker", default: none)
 #let profilering = data.at("profilering", default: none)
@@ -47,7 +47,7 @@
 #set document(title: "Det du fortalte oss da du ble registrert som arbeidssøker", author: "Nav")
 #show: oyeblikk-style
 
-#oyeblikkbilde-header(data.mottaker)
+#oyeblikksbilde-header(data.mottaker)
 
 = Det du fortalte oss da du ble registrert som arbeidssøker
 

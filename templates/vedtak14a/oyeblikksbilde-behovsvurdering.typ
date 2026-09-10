@@ -1,13 +1,13 @@
 #import "/resources/vedtak14a/lib.typ": *
 
-#let data = json("/data/vedtak14a/oyeblikkbilde-behovsvurdering.json")
+#let data = json("/data/vedtak14a/oyeblikksbilde-behovsvurdering.json")
 #let sistOppdatert = data.at("sistOppdatert", default: none)
 #let svar = data.at("svar", default: ())
 
 #set document(title: "Svarene dine om behov for veiledning", author: "Nav")
 #show: oyeblikk-style
 
-#oyeblikkbilde-header(data.mottaker)
+#oyeblikksbilde-header(data.mottaker)
 
 = Svarene dine om behov for veiledning
 

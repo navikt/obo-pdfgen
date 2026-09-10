@@ -1,4 +1,4 @@
-#let oyeblikkbilde-header(mottaker) = {
+#let oyeblikksbilde-header(mottaker) = {
   block(
     below: 48pt,
     image("/resources/vedtak14a/Nav-logo.svg", height: 16pt, alt: "Nav-logo")

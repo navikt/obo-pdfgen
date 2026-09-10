@@ -7,16 +7,16 @@ mkdir -p "$OUTPUT_FOLDER"
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
 templates=(
-  "oyeblikkbilde-behovsvurdering"
-  "oyeblikkbilde-cv"
-  "oyeblikkbilde-arbeidssokerregistret"
+  "oyeblikksbilde-behovsvurdering"
+  "oyeblikksbilde-cv"
+  "oyeblikksbilde-arbeidssokerregistret"
 )
 
 filnavn_for_template() {
   case "$1" in
-    "oyeblikkbilde-behovsvurdering") echo "behovsvurdering.pdf" ;;
-    "oyeblikkbilde-cv") echo "cv.pdf" ;;
-    "oyeblikkbilde-arbeidssokerregistret") echo "arbeidssokerregisteret.pdf" ;;
+    "oyeblikksbilde-behovsvurdering") echo "behovsvurdering.pdf" ;;
+    "oyeblikksbilde-cv") echo "cv.pdf" ;;
+    "oyeblikksbilde-arbeidssokerregistret") echo "arbeidssokerregisteret.pdf" ;;
     *) echo "$1.pdf" ;;
   esac
 }

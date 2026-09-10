@@ -1,8 +1,8 @@
 // Samleimport for vedtak14a-endepunktene. Gir én import-flate slik at
 // templates/vedtak14a/*.typ kan gjøre `#import "/resources/vedtak14a/lib.typ": *`.
 
-#import "layouts/oyeblikksbilde-header.typ": oyeblikkbilde-header
-#import "util.typ": iso_to_long_date, json-key, by-malform, nav-lenke
+#import "layouts/oyeblikksbilde-header.typ": oyeblikksbilde-header
+#import "util.typ": iso_to_long_date, json-key, by-malform, nav-lenke, felt, field-or-none, date-field-or-none, build-list, har, section, simple-section
 #import "style.typ": style
 #import "oyeblikksbilde-style.typ": oyeblikksbilde-style
 
