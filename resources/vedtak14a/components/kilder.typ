@@ -4,13 +4,13 @@
   block(breakable: false)[
     #by-malform(
       malform,
-      [== Kjeldene vi har brukt i vurderinga],
-      [== Kildene vi har brukt i vurderingen])
+      nn: [== Kjeldene vi har brukt i vurderinga],
+      nb: [== Kildene vi har brukt i vurderingen])
 
     #by-malform(
       malform, 
-      [I vurderinga vår har vi brukt opplysningar frå desse kjeldene:],
-      [I vurderingen vår har vi brukt opplysninger fra disse kildene:])
+      nn: [I vurderinga vår har vi brukt opplysningar frå desse kjeldene:],
+      nb: [I vurderingen vår har vi brukt opplysninger fra disse kildene:])
 
     #for kilde in kilder [
       - #kilde
@@ -19,20 +19,20 @@
     #if malType == "STANDARD_INNSATS_SKAFFE_ARBEID_PROFILERING" {
       by-malform(
         malform,
-        [I tillegg har vi sett på kva moglegheiter du har i arbeidsmarknaden, og at du har vore i jobb i minst 6 av dei siste 12 månadene.],
-        [I tillegg har vi sett på mulighetene dine i arbeidsmarkedet, og at du har vært i jobb i minst 6 av de siste 12 månedene.],
+        nn: [I tillegg har vi sett på kva moglegheiter du har i arbeidsmarknaden, og at du har vore i jobb i minst 6 av dei siste 12 månadene.],
+        nb: [I tillegg har vi sett på mulighetene dine i arbeidsmarkedet, og at du har vært i jobb i minst 6 av de siste 12 månedene.],
       )
     } else {
       by-malform(
         malform,
-        [I tillegg har vi sett på kva moglegheiter du har i arbeidsmarknaden.],
-        [I tillegg har vi sett på mulighetene dine i arbeidsmarkedet.],
+        nn: [I tillegg har vi sett på kva moglegheiter du har i arbeidsmarknaden.],
+        nb: [I tillegg har vi sett på mulighetene dine i arbeidsmarkedet.],
       )
     }
     #by-malform(
       malform,
-      [Du finn nokre av opplysningane vi har om deg på #nav-lenke("nav.no/min-side").],
-      [Du finner noen av opplysningene vi har om deg på #nav-lenke("nav.no/min-side").]
+      nn: [Du finn nokre av opplysningane vi har om deg på #nav-lenke("nav.no/min-side").],
+      nb: [Du finner noen av opplysningene vi har om deg på #nav-lenke("nav.no/min-side").]
     )
   ]
 }

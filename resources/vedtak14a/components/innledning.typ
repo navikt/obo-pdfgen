@@ -44,15 +44,15 @@
 
   by-malform(
     malform,
-    [Vedtaket er gjort etter lov om arbeids- og velferdsforvaltninga (Nav-lova) § 14 a.],
-    [Vedtaket er gjort etter lov om arbeids- og velferdsforvaltningen (Nav-loven) § 14 a.],
+    nn: [Vedtaket er gjort etter lov om arbeids- og velferdsforvaltninga (Nav-lova) § 14 a.],
+    nb: [Vedtaket er gjort etter lov om arbeids- og velferdsforvaltningen (Nav-loven) § 14 a.],
   )
 
   parbreak()
 
   by-malform(
     malform,
-    [Dersom du har søkt om pengestøtte frå Nav får du eit eige vedtak og brev om dette.],
-    [Dersom du har søkt om pengestøtte fra Nav får du et eget vedtak og brev om dette.],
+    nn: [Dersom du har søkt om pengestøtte frå Nav får du eit eige vedtak og brev om dette.],
+    nb: [Dersom du har søkt om pengestøtte fra Nav får du et eget vedtak og brev om dette.],
   )
 }

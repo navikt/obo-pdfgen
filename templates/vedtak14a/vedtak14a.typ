@@ -24,8 +24,8 @@
 #let unntattOffentlig = emph(
   by-malform(
     malform,
-    [Unntatt offentlegheita],
-    [Unntatt offentligheten]
+    nn: [Unntatt offentlegheita],
+    nb: [Unntatt offentligheten]
   )
 )
 

@@ -19,7 +19,7 @@
     block(breakable: false)[
       #by-malform(
         malform,
-        [
+        nn: [
           == Tenester du kan bruke
 
           På #nav-lenke("nav.no") kan du
@@ -28,7 +28,7 @@
           - registrere CV-en din på #nav-lenke("nav.no/min-cv") slik at Nav kan formidle den til aktuelle arbeidsgivarar
           - halde oversikt over jobbar du søkjer på og andre arbeidsretta aktivitetar i aktivitetsplanen på #nav-lenke("nav.no/aktivitetsplan")
         ],
-        [
+        nb: [
           == Tjenester du kan bruke
 
           På #nav-lenke("nav.no") kan du
@@ -44,14 +44,14 @@
     block(breakable: false)[
       #by-malform(
         malform,
-        [
+        nn: [
           == Tenester du kan bruke
 
           På #nav-lenke("nav.no") kan du
 
           - halde oversikt over arbeidsretta aktivitetar i aktivitetsplanen på #nav-lenke("nav.no/aktivitetsplan")
         ],
-        [
+        nb: [
           == Tjenester du kan bruke
 
           På #nav-lenke("nav.no") kan du

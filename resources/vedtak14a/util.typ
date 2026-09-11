@@ -20,7 +20,7 @@
 }
 
 // Velger nynorsk (nn) eller bokmål (nb) innhold basert på malform.
-#let by-malform(malform, nn, nb) = if malform == "NN" { nn } else { nb }
+#let by-malform(malform, nn: none, nb: none) = if malform == "NN" { nn } else { nb }
 
 // Klikkbar nav.no-lenke som ikke brytes over linjeskift.
 #let nav-lenke(sti) = box(link("https://" + sti)[#sti])
