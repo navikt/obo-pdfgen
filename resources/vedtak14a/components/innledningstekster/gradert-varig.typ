@@ -1,4 +1,4 @@
-#import "../util.typ": by-malform
+#import "../../util.typ": by-malform
 
 #let gradert-varig(malform) = by-malform(
   malform,

@@ -1,4 +1,4 @@
-#import "../util.typ": by-malform
+#import "../../util.typ": by-malform
 
 #let situasjonsbestemt-beholde(malform) = by-malform(
   malform,
