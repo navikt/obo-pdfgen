@@ -21,7 +21,7 @@
   set text(
     font: "Source Sans 3",
     fill: rgb("#000000"),
-    weight: "regular",
+    weight: 375,
     size: 11pt,
     top-edge: 16pt
   )

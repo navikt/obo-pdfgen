@@ -1,11 +1,11 @@
-#import "../maler/standard-skaffe.typ": standard-skaffe
-#import "../maler/standard-beholde.typ": standard-beholde
-#import "../maler/situasjonsbestemt-skaffe.typ": situasjonsbestemt-skaffe
-#import "../maler/situasjonsbestemt-beholde.typ": situasjonsbestemt-beholde
-#import "../maler/spesielt-tilpasset-skaffe.typ": spesielt-tilpasset-skaffe
-#import "../maler/spesielt-tilpasset-beholde.typ": spesielt-tilpasset-beholde
-#import "../maler/gradert-varig.typ": gradert-varig
-#import "../maler/varig.typ": varig
+#import "innledningstekster/standard-skaffe.typ": standard-skaffe
+#import "innledningstekster/standard-beholde.typ": standard-beholde
+#import "innledningstekster/situasjonsbestemt-skaffe.typ": situasjonsbestemt-skaffe
+#import "innledningstekster/situasjonsbestemt-beholde.typ": situasjonsbestemt-beholde
+#import "innledningstekster/spesielt-tilpasset-skaffe.typ": spesielt-tilpasset-skaffe
+#import "innledningstekster/spesielt-tilpasset-beholde.typ": spesielt-tilpasset-beholde
+#import "innledningstekster/gradert-varig.typ": gradert-varig
+#import "innledningstekster/varig.typ": varig
 #import "../util.typ": by-malform
 
 #let innledning(malType, malform) = {

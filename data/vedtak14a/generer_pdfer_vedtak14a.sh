@@ -20,7 +20,7 @@ malforms=("NN" "NB")
 
 getMalTypeLesbartNavn() {
   case "$1" in
-    "STANDARD_INNSATS_BEHOLDE_ARBEID") echo "Gode muligheter beholde arbeid" ;;
+    "STANDARD_INNSATS_BEHOLDE_ARBEID") echo "Gode muligheter - beholde arbeid" ;;
     "STANDARD_INNSATS_SKAFFE_ARBEID") echo "Gode muligheter - skaffe arbeid" ;;
     "STANDARD_INNSATS_SKAFFE_ARBEID_PROFILERING") echo "Gode muligheter - skaffe arbeid profilering" ;;
     "SITUASJONSBESTEMT_INNSATS_BEHOLDE_ARBEID") echo "Trenger veiledning - beholde arbeid" ;;
