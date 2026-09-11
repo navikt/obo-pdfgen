@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PDF_ENDPOINT="http://localhost:8081/api/v1/genpdf/vedtak14a/vedtak14a"
+PDF_ENDPOINT="http://localhost:8080/api/v1/genpdf/vedtak14a/vedtak14a"
 OUTPUT_FOLDER="${1:-$HOME/Downloads/vedtak14a_ungdomsgaranti}"
 mkdir -p "$OUTPUT_FOLDER"
 
@@ -35,7 +35,7 @@ for malType in "${ungdomsgaranti_types[@]}"; do
       --arg navKontor "Nav Kontor" \
       --arg dato "01. april 2025" \
       --arg malform "$malform" \
-      --argjson begrunnelse '["Avsnitt 1", "Avsnitt 2"]' \
+      --argjson begrunnelse '"Avsnitt 1, del a\nAvsnitt 1, del b\n\nAvsnitt 2"' \
       --argjson kilder '["Kilde 1", "Kilde 2"]' \
       --argjson mottaker '{"navn":"Navn Navnesen","fodselsnummer":"12345678910"}' \
       --argjson utkast true \

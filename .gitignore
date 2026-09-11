@@ -17,6 +17,7 @@ buildNumber.properties
 .classpath
 
 .idea/
+.vscode/
 
 ### macOS ###
 # General

@@ -6,6 +6,7 @@
 #import "../maler/spesielt-tilpasset-beholde.typ": spesielt-tilpasset-beholde
 #import "../maler/gradert-varig.typ": gradert-varig
 #import "../maler/varig.typ": varig
+#import "../util.typ": by-malform
 
 #let innledning(malType, malform) = {
   if malType == "STANDARD_INNSATS_SKAFFE_ARBEID_PROFILERING" {
@@ -41,19 +42,17 @@
 
   parbreak()
 
-  if malform == "NN" [
-    Vedtaket er gjort etter lov om arbeids- og velferdsforvaltninga (Nav-lova) § 14 a.
-  ]
-  if malform == "NB" [
-    Vedtaket er gjort etter lov om arbeids- og velferdsforvaltningen (Nav-loven) § 14 a.
-  ]
+  by-malform(
+    malform,
+    nn: [Vedtaket er gjort etter lov om arbeids- og velferdsforvaltninga (Nav-lova) § 14 a.],
+    nb: [Vedtaket er gjort etter lov om arbeids- og velferdsforvaltningen (Nav-loven) § 14 a.],
+  )
 
   parbreak()
 
-  if malform == "NN" [
-    Dersom du har søkt om pengestøtte frå Nav får du eit eige vedtak og brev om dette.
-  ]
-  if malform == "NB" [
-    Dersom du har søkt om pengestøtte fra Nav får du et eget vedtak og brev om dette.
-  ]
+  by-malform(
+    malform,
+    nn: [Dersom du har søkt om pengestøtte frå Nav får du eit eige vedtak og brev om dette.],
+    nb: [Dersom du har søkt om pengestøtte fra Nav får du et eget vedtak og brev om dette.],
+  )
 }

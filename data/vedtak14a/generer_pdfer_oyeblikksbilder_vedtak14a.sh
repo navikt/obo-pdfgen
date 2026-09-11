@@ -1,22 +1,22 @@
 #!/opt/homebrew/bin/bash
 set -euo pipefail
 
-PDF_ENDPOINT_BASE="http://localhost:8081/api/v1/genpdf/vedtak14a"
+PDF_ENDPOINT_BASE="http://localhost:8080/api/v1/genpdf/vedtak14a"
 OUTPUT_FOLDER="${1:-$HOME/Downloads/vedtak14a/oyeblikksbilder}"
 mkdir -p "$OUTPUT_FOLDER"
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
 templates=(
-  "oyeblikkbilde-behovsvurdering"
-  "oyeblikkbilde-cv"
-  "oyeblikkbilde-arbeidssokerregistret"
+  "oyeblikksbilde-behovsvurdering"
+  "oyeblikksbilde-cv"
+  "oyeblikksbilde-arbeidssokerregistret"
 )
 
 filnavn_for_template() {
   case "$1" in
-    "oyeblikkbilde-behovsvurdering") echo "behovsvurdering.pdf" ;;
-    "oyeblikkbilde-cv") echo "cv.pdf" ;;
-    "oyeblikkbilde-arbeidssokerregistret") echo "arbeidssokerregisteret.pdf" ;;
+    "oyeblikksbilde-behovsvurdering") echo "behovsvurdering.pdf" ;;
+    "oyeblikksbilde-cv") echo "cv.pdf" ;;
+    "oyeblikksbilde-arbeidssokerregistret") echo "arbeidssokerregisteret.pdf" ;;
     *) echo "$1.pdf" ;;
   esac
 }
