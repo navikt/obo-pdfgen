@@ -1,12 +1,12 @@
 #import "../util.typ": by-malform, nav-lenke
 
 #let kilder(malform, malType, kilder) = {
-  block(breakable: false)[
-    #by-malform(
-      malform,
-      nn: [== Kjeldene vi har brukt i vurderinga],
-      nb: [== Kildene vi har brukt i vurderingen])
+  by-malform(
+    malform,
+    nn: [== Kjeldene vi har brukt i vurderinga],
+    nb: [== Kildene vi har brukt i vurderingen])
 
+  block(breakable: false)[
     #by-malform(
       malform, 
       nn: [I vurderinga vår har vi brukt opplysningar frå desse kjeldene:],

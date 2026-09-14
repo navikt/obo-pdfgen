@@ -12,5 +12,4 @@
 #import "components/kilder.typ": kilder
 #import "components/hjelp.typ": hjelp
 #import "components/klage.typ": klage
-#import "components/sporsmal.typ": sporsmal
-#import "components/signatur.typ": signatur
+#import "components/sporsmal-og-signatur.typ": sporsmal-og-signatur
