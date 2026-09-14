@@ -18,7 +18,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
-      contents: read
       id-token: write
     outputs:
       image: ${{ steps.docker-build-push.outputs.image }}
@@ -38,7 +37,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
-      contents: read
       id-token: write
     steps:
       - name: Checkout
@@ -57,7 +55,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
-      contents: read
       id-token: write
     steps:
       - name: Checkout
