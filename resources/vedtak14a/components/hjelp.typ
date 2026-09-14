@@ -15,13 +15,19 @@
 )
 
 #let hjelp(maltype, malform) = {
+  if maltype in skaffe-typer or maltype in beholde-typer {
+    by-malform(
+      malform,
+      nn: [== Tenester du kan bruke],
+      nb: [== Tjenester du kan bruke],
+    )
+  }
+
   if maltype in skaffe-typer {
     block(breakable: false)[
       #by-malform(
         malform,
         nn: [
-          == Tenester du kan bruke
-
           På #nav-lenke("nav.no") kan du
 
           - få tips til å skrive CV og søknad og korleis du kan bu deg til jobbintervju på #nav-lenke("nav.no/soker-jobb")
@@ -29,8 +35,6 @@
           - halde oversikt over jobbar du søkjer på og andre arbeidsretta aktivitetar i aktivitetsplanen på #nav-lenke("nav.no/aktivitetsplan")
         ],
         nb: [
-          == Tjenester du kan bruke
-
           På #nav-lenke("nav.no") kan du
 
           - få tips til å skrive CV og søknad og hvordan du kan forberede deg til jobbintervju på #nav-lenke("nav.no/soker-jobb")
@@ -45,15 +49,11 @@
       #by-malform(
         malform,
         nn: [
-          == Tenester du kan bruke
-
           På #nav-lenke("nav.no") kan du
 
           - halde oversikt over arbeidsretta aktivitetar i aktivitetsplanen på #nav-lenke("nav.no/aktivitetsplan")
         ],
         nb: [
-          == Tjenester du kan bruke
-
           På #nav-lenke("nav.no") kan du
 
           - holde oversikt over arbeidsrettede aktiviteter i aktivitetsplanen på #nav-lenke("nav.no/aktivitetsplan")

@@ -1,8 +1,9 @@
 #import "../util.typ": by-malform, nav-lenke
 
-#let sporsmal(malform) = {
+#let sporsmal-og-signatur(malform, veilederNavn, navKontor) = {
+  [== Har du spørsmål?]
+  
   block(breakable: false)[
-    == Har du spørsmål?
 
     #by-malform(
       malform,
@@ -21,5 +22,15 @@
         Hvis du ikke finner svar på nav.no, kan du ringe oss på telefon 55 55 33 33, hverdager 09:00–15:00.
       ],
     )
+
+    #block(above: 32pt, below: 40pt)[
+      #by-malform(
+        malform,
+        nn: [Med vennleg helsing #linebreak()],
+        nb: [Med vennlig hilsen #linebreak()]
+      )
+      #if veilederNavn != none and veilederNavn != "" [#veilederNavn #linebreak()]
+      #navKontor
+    ]
   ]
 }
