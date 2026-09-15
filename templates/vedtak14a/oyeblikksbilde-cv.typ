@@ -52,6 +52,7 @@
 #let varighet-label(v) = {
   let n = v.varighet
   let e = v.tidsenhet
+  if n == none { return "" }
   let entall = n == 1
   let ord = if e == "TIME" { if entall { "time" } else { "timer" } }
     else if e == "DAG" { if entall { "dag" } else { "dager" } }
