@@ -58,7 +58,7 @@
       }
       let utfoertAv = sendtInnAv.at("utfoertAv", default: none)
       if utfoertAv != none and utfoertAv.at("type", default: none) == "VEILEDER" {
-        block(below: 0pt)[#json-key[Registrert av ident: ] #utfoertAv.id]
+        block(below: 0pt)[#json-key[Registrert av ident: ] #utfoertAv.at("id", default: "")]
       }
     }
 
@@ -73,7 +73,7 @@
     qa-multi(
       "Velg alternativet som stemmer best på situasjonen din?",
       jobbsituasjon,
-      j => [#jobbsituasjon-label(j.at("beskrivelse", default: ""))],
+      j => [#labeled(j.at("beskrivelse", default: none), jobbsituasjon-label)],
     )
 
     let annet = opplysninger.at("annet", default: (:))
@@ -89,7 +89,7 @@
     [== Profilering]
     qa(
       "Forslag om brukers muligheter og behov (resultat fra profilering):",
-      profilert-label(profilering.at("profilertTil", default: "")),
+      labeled(profilering.at("profilertTil", default: none), profilert-label),
     )
 
     let jobbet = profilering.at("jobbetSammenhengendeSeksAvTolvSisteManeder", default: none)
