@@ -17,8 +17,8 @@ getMalTypeLesbartNavn() {
   case "$1" in
     "SITUASJONSBESTEMT_INNSATS_BEHOLDE_ARBEID") echo "Trenger veiledning - beholde arbeid" ;;
     "SITUASJONSBESTEMT_INNSATS_SKAFFE_ARBEID") echo "Trenger veiledning - skaffe arbeid" ;;
-    "SPESIELT_TILPASSET_INNSATS_BEHOLDE_ARBEID") echo "Trenger veiledning - nedsatt arbeidsevne beholde arbeid" ;;
-    "SPESIELT_TILPASSET_INNSATS_SKAFFE_ARBEID") echo "Trenger veiledning - nedsatt arbeidsevne skaffe arbeid" ;;
+    "SPESIELT_TILPASSET_INNSATS_BEHOLDE_ARBEID") echo "Trenger veiledning, nedsatt arbeidsevne - beholde arbeid" ;;
+    "SPESIELT_TILPASSET_INNSATS_SKAFFE_ARBEID") echo "Trenger veiledning, nedsatt arbeidsevne - skaffe arbeid" ;;
     *) echo "Ukjent malType" ;;
   esac
 }
