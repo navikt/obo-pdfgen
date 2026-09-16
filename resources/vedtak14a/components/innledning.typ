@@ -1,11 +1,12 @@
-#import "../maler/standard-skaffe.typ": standard-skaffe
-#import "../maler/standard-beholde.typ": standard-beholde
-#import "../maler/situasjonsbestemt-skaffe.typ": situasjonsbestemt-skaffe
-#import "../maler/situasjonsbestemt-beholde.typ": situasjonsbestemt-beholde
-#import "../maler/spesielt-tilpasset-skaffe.typ": spesielt-tilpasset-skaffe
-#import "../maler/spesielt-tilpasset-beholde.typ": spesielt-tilpasset-beholde
-#import "../maler/gradert-varig.typ": gradert-varig
-#import "../maler/varig.typ": varig
+#import "innledningstekster/standard-skaffe.typ": standard-skaffe
+#import "innledningstekster/standard-beholde.typ": standard-beholde
+#import "innledningstekster/situasjonsbestemt-skaffe.typ": situasjonsbestemt-skaffe
+#import "innledningstekster/situasjonsbestemt-beholde.typ": situasjonsbestemt-beholde
+#import "innledningstekster/spesielt-tilpasset-skaffe.typ": spesielt-tilpasset-skaffe
+#import "innledningstekster/spesielt-tilpasset-beholde.typ": spesielt-tilpasset-beholde
+#import "innledningstekster/gradert-varig.typ": gradert-varig
+#import "innledningstekster/varig.typ": varig
+#import "../util.typ": by-malform
 
 #let innledning(malType, malform) = {
   if malType == "STANDARD_INNSATS_SKAFFE_ARBEID_PROFILERING" {
@@ -41,19 +42,17 @@
 
   parbreak()
 
-  if malform == "NN" [
-    Vedtaket er gjort etter lov om arbeids- og velferdsforvaltninga (Nav-lova) § 14 a.
-  ]
-  if malform == "NB" [
-    Vedtaket er gjort etter lov om arbeids- og velferdsforvaltningen (Nav-loven) § 14 a.
-  ]
+  by-malform(
+    malform,
+    nn: [Vedtaket er gjort etter lov om arbeids- og velferdsforvaltninga (Nav-lova) § 14 a.],
+    nb: [Vedtaket er gjort etter lov om arbeids- og velferdsforvaltningen (Nav-loven) § 14 a.],
+  )
 
   parbreak()
 
-  if malform == "NN" [
-    Dersom du har søkt om pengestøtte frå Nav får du eit eige vedtak og brev om dette.
-  ]
-  if malform == "NB" [
-    Dersom du har søkt om pengestøtte fra Nav får du et eget vedtak og brev om dette.
-  ]
+  by-malform(
+    malform,
+    nn: [Dersom du har søkt om pengestøtte frå Nav får du eit eige vedtak og brev om dette.],
+    nb: [Dersom du har søkt om pengestøtte fra Nav får du et eget vedtak og brev om dette.],
+  )
 }

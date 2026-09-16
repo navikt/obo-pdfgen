@@ -14,12 +14,11 @@ spec:
   observability:
     logging:
       destinations:
+        - id: elastic
         - id: loki
     autoInstrumentation:
       enabled: true
       runtime: sdk
-  ingresses:
-    - https://obo-pdfgen.intern.dev.nav.no
   liveness:
     path: /internal/is_alive
   readiness:
