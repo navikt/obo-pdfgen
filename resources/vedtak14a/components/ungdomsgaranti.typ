@@ -2,7 +2,7 @@
   if malform == "NN" [
     == Du har rett til oppfølging etter ungdomsgarantien
 
-    Dette tyder at du får tilbod om ein fast kontaktperson hos Nav som vil gje deg individuelt tilpassa oppfølging så lenge det er naudsynt. Ungdomsgarantien gjeld inntil du fyller 30 år. Les meir om ungdomsgarantien og fast kontaktperson på #box[nav.no].
+    Dette tyder at du får tilbod om ein fast kontaktperson hos Nav som vil gje deg individuelt tilpassa oppfølging så lenge det er naudsynt. Ungdomsgarantien gjeld inntil du fyller 30 år. Les meir om ungdomsgarantien og fast kontaktperson på #box[nav.no/ungdomsgarantien].
   ]
 
   if malform == "NB" [
