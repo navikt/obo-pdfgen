@@ -2,7 +2,7 @@
 
 #let data = json("/data/vedtak14a/oyeblikksbilde-behovsvurdering.json")
 #let sistOppdatert = data.at("sistOppdatert", default: none)
-#let svar = data.at("svar", default: ())
+#let svar = if data.at("svar", default: none) != none { data.svar } else { () }
 
 #set document(title: "Svarene dine om behov for veiledning", author: "Nav")
 #show: body => oyeblikksbilde-style(body, utkast: data.at("utkast", default: false))

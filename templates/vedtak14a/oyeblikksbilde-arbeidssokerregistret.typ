@@ -64,7 +64,7 @@
 
     [== Besvarelse]
 
-    let utdanning = opplysninger.at("utdanning", default: (:))
+    let utdanning = if opplysninger.at("utdanning", default: none) != none { opplysninger.utdanning } else { (:) }
     qa("Hva er din høyeste fullførte utdanning?", labeled(utdanning.at("nus", default: none), nus-label))
     qa("Er utdanningen din bestått?", labeled(utdanning.at("bestaatt", default: none), ja-nei))
     qa("Er utdanningen din godkjent i Norge?", labeled(utdanning.at("godkjent", default: none), ja-nei))
@@ -76,10 +76,10 @@
       j => [#labeled(j.at("beskrivelse", default: none), jobbsituasjon-label)],
     )
 
-    let annet = opplysninger.at("annet", default: (:))
+    let annet = if opplysninger.at("annet", default: none) != none { opplysninger.annet } else { (:) }
     qa("Har du andre problemer med å søke eller være i jobb?", labeled(annet.at("andreForholdHindrerArbeid", default: none), ja-nei))
 
-    let helse = opplysninger.at("helse", default: (:))
+    let helse = if opplysninger.at("helse", default: none) != none { opplysninger.helse } else { (:) }
     qa("Har du helseproblemer som hindrer deg i å søke eller være i jobb?", labeled(helse.at("helsetilstandHindrerArbeid", default: none), ja-nei))
   } else [
     Kunne ikke hente informasjonen du fortalte oss da du ble registrert som arbeidssøker

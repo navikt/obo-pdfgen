@@ -2,7 +2,7 @@
 
 #let data = json("/data/vedtak14a/oyeblikksbilde-cv.json")
 #let sistEndret = data.at("sistEndret", default: none)
-#let jobbprofil = data.at("jobbprofil", default: (:))
+#let jobbprofil = if data.at("jobbprofil", default: none) != none { data.jobbprofil } else { (:) }
 
 #let fagdok-type-label(verdi) = (
   "AUTORISASJON": "Autorisasjon",

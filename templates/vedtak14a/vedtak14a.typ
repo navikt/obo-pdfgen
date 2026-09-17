@@ -52,7 +52,7 @@
 
 #begrunnelse(malform, data.at("begrunnelse", default: ()))
 
-#kilder(malform, maltype, data.at("kilder", default: ()))
+#kilder(malform, maltype, if data.at("kilder", default: none) != none { data.kilder } else { () })
 
 #hjelp(maltype, malform)
 
