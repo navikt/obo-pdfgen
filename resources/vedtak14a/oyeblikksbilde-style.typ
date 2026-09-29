@@ -19,7 +19,7 @@
     foreground: foreground,
   )
   set text(
-    font: "Source Sans 3",
+    font: ("Source Sans 3", "Noto Sans Symbols 2"),
     fill: rgb("#000000"),
     weight: "regular",
     size: 11pt,
