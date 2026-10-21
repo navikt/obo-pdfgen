@@ -19,7 +19,7 @@
     foreground: foreground,
   )
   set text(
-    font: ("Source Sans 3", "Noto Sans Symbols 2", "Noto Sans CJK SC", "Noto Sans"),
+    font: ("Source Sans 3", "Noto Sans Symbols 2", "Noto Sans CJK SC", "Noto Sans", "Noto Sans Bengali"),
     fill: rgb("#000000"),
     weight: "regular",
     size: 11pt,
