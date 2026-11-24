@@ -43,7 +43,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # ratchet:actions/checkout@v7.0.1
 
       - name: Deploy application
-        uses: nais/deploy/actions/deploy@7b60caaded00332e9aa117a8342daa0876851dfe # ratchet:nais/deploy/actions/deploy@v2
+        uses: nais/deploy/actions/deploy@6fe576e10c7a325643bad96566bd6cb180a2f782 # ratchet:nais/deploy/actions/deploy@v2
         env:
           CLUSTER: dev-gcp
           RESOURCE: .nais/application-config-dev.yaml
@@ -61,7 +61,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # ratchet:actions/checkout@v7.0.1
 
       - name: Deploy application
-        uses: nais/deploy/actions/deploy@7b60caaded00332e9aa117a8342daa0876851dfe # ratchet:nais/deploy/actions/deploy@v2
+        uses: nais/deploy/actions/deploy@6fe576e10c7a325643bad96566bd6cb180a2f782 # ratchet:nais/deploy/actions/deploy@v2
         env:
           CLUSTER: prod-gcp
           RESOURCE: .nais/application-config-prod.yaml
@@ -76,7 +76,7 @@ jobs:
       contents: write
     steps:
       - name: Create release
-        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # ratchet:softprops/action-gh-release@v3.0.3
+        uses: softprops/action-gh-release@8a0cd651e5b2365bd640854a3fa5dfc70e4875f3 # ratchet:softprops/action-gh-release@v3.0.4
         with:
           name: Release to prod
           target_commitish: main
